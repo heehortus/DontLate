@@ -1,17 +1,19 @@
 package com.example.dontlate
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.splashscreen.SplashScreen
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
+
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var splashScreen: SplashScreen
+    lateinit var bottomNavi: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        splashScreen = installSplashScreen()
         setContentView(R.layout.activity_main)
+
+        bottomNavi = findViewById(R.id.bottomNavi)
+
     }
 }
