@@ -5,18 +5,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 
-class MainActivity : AppCompatActivity() {
+class FontSizeActivity : AppCompatActivity() {
 
-    lateinit var startBtn: Button
+    lateinit var backBtn: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_font_size)
 
-        startBtn = findViewById(R.id.button)
+        backBtn = findViewById(R.id.backBtnF)
 
-        startBtn.setOnClickListener{
-            var intent = Intent(this, StartupActivity::class.java)
+        backBtn.setOnClickListener{
+            var intent = Intent(this, SettingActivity::class.java)
             startActivity(intent)
         }
     }

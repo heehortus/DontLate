@@ -5,18 +5,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 
-class MainActivity : AppCompatActivity() {
+class AccountActivity : AppCompatActivity() {
 
-    lateinit var startBtn: Button
+    lateinit var backBtn: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_account)
 
-        startBtn = findViewById(R.id.button)
+        backBtn = findViewById(R.id.backBtnA)
 
-        startBtn.setOnClickListener{
-            var intent = Intent(this, StartupActivity::class.java)
+        backBtn.setOnClickListener{
+            var intent = Intent(this, MyPageActivity::class.java)
             startActivity(intent)
         }
     }
