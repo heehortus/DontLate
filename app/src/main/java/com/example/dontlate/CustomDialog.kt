@@ -21,7 +21,7 @@ open class CustomDialog(context: Context) : AppCompatActivity() {
     private lateinit var cancel : Button
     val Tag = "로그 "
 
-    fun start(bodyMessage : String, mode : Int, dialogMode : Int, context : Context) {
+    fun start(bodyMessage: String, mode: Int, dialogMode: Int, context: AccountActivity) {
         //dialogMode = 1 (확인 버튼 한 개만 존재)
         //dialogMode = 2 (취소/확인 버튼 모두 존재)
         //dialogMode = 3 (회원 탈퇴 다이얼로그)
@@ -93,5 +93,13 @@ open class CustomDialog(context: Context) : AppCompatActivity() {
         }
         dialog.setCancelable(false) //다이얼로그 이외의 화면 터치 시 닫히지 않음
         dialog.show()
+    }
+
+    fun start(bodyMessage: String, mode: Int, dialogMode: Int, context: MyPageFragment) {
+
+    }
+
+    fun start(bodyMessage: String, mode: Int, dialogMode: Int, context: EditAccountActivity) {
+
     }
 }

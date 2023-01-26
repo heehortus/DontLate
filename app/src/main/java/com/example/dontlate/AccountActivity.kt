@@ -4,10 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
 import com.google.android.material.textfield.TextInputEditText
-import org.w3c.dom.Text
 
 
 class AccountActivity : AppCompatActivity() {
@@ -51,8 +49,9 @@ class AccountActivity : AppCompatActivity() {
         accountPw = findViewById(R.id.accountPw)
 
         backBtn.setOnClickListener{
-            var intent = Intent(this, MyPageActivity::class.java)
-            startActivity(intent)
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.mainFrameLayout, MyPageFragment())
+                .addToBackStack(null).commit()
         }
 
         editBtn.setOnClickListener{

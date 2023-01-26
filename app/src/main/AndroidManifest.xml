@@ -47,16 +47,10 @@
             android:name=".AccountActivity"
             android:exported="false" />
         <activity
-            android:name=".MyPageActivity"
-            android:exported="false" />
-        <activity
             android:name=".joinActivity"
             android:exported="false" />
         <activity
             android:name=".loginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".StartupActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
