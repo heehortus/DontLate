@@ -22,14 +22,14 @@ class SettingActivity : AppCompatActivity() {
 
 
         backBtn.setOnClickListener{
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.mainFrameLayout, MyPageFragment())
-                .addToBackStack(null).commit()
+            finish()
+
         }
 
         fontSizeBtn.setOnClickListener{
             var intent = Intent(this, FontSizeActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         //폰트 사이즈 설정

@@ -49,14 +49,13 @@ class AccountActivity : AppCompatActivity() {
         accountPw = findViewById(R.id.accountPw)
 
         backBtn.setOnClickListener{
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.mainFrameLayout, MyPageFragment())
-                .addToBackStack(null).commit()
+            finish()
         }
 
         editBtn.setOnClickListener{
             var intent = Intent(this, EditAccountActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         //폰트 사이즈 설정
