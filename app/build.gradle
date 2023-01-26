@@ -27,8 +27,14 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+
+    //view binding
+    buildFeatures {
+        viewBinding true
     }
 }
 
@@ -49,4 +55,7 @@ dependencies {
     //바텀 네비게이션 적용
     implementation 'androidx.navigation:navigation-fragment:2.3.2'
     implementation 'androidx.navigation:navigation-ui:2.3.2'
+
+    //캘린더뷰 적용
+    implementation 'com.github.prolificinteractive:material-calendarview:2.0.1'
 }
