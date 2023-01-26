@@ -8,8 +8,9 @@ import androidx.core.splashscreen.SplashScreen
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 
 class MainActivity : AppCompatActivity() {
-
+    //임시 사용
     lateinit var startBtn: Button
+
     private lateinit var splashScreen: SplashScreen
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,9 +18,10 @@ class MainActivity : AppCompatActivity() {
         splashScreen = installSplashScreen()
         setContentView(R.layout.activity_main)
 
-        startBtn = findViewById(R.id.button)
+        //임시 사용
+        startBtn = findViewById(R.id.validation)
 
-        startBtn.setOnClickListener{
+        startBtn.setOnClickListener {
             var intent = Intent(this, StartupActivity::class.java)
             startActivity(intent)
         }
