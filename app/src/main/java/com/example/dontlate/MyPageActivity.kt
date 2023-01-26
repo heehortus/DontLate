@@ -61,5 +61,6 @@ class MyPageActivity : AppCompatActivity() {
         logoutBtn.textSize = font
         version.textSize = font
         versionInfo.textSize = font
+
     }
 }

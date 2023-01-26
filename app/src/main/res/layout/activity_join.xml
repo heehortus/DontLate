@@ -72,7 +72,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.205" />
 
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
         android:layout_width="237dp"
@@ -97,7 +96,6 @@
             android:hint="아이디"
             android:inputType="text"
             android:textSize="16sp"
-
             android:textStyle="bold" />
     </com.google.android.material.textfield.TextInputLayout>
 

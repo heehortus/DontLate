@@ -4,20 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/ivory"
     tools:context=".MainActivity">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:scaleType="centerCrop"
+        android:layout_width="153dp"
+        android:layout_height="149dp"
+        android:src="@drawable/homeclock"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.256"
-        app:srcCompat="@mipmap/logo" />
+        app:layout_constraintVertical_bias="0.286" />
 
     <TextView
         android:id="@+id/version"
@@ -48,10 +47,11 @@
         android:id="@+id/versionInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-16dp"
+        android:layout_marginTop="24dp"
         android:text="아직 약속이 없어요. 약속을 생성해보세요!"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -61,9 +61,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="@color/ivory"
-        app:itemIconSize="36dp"
+        android:background="@color/white"
         android:elevation="10dp"
+        app:itemIconSize="36dp"
         app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

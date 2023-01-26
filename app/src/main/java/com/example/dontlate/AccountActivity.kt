@@ -9,6 +9,7 @@ import android.widget.TextView
 import com.google.android.material.textfield.TextInputEditText
 import org.w3c.dom.Text
 
+
 class AccountActivity : AppCompatActivity() {
 
     lateinit var backBtn: Button
@@ -48,7 +49,6 @@ class AccountActivity : AppCompatActivity() {
         accountName = findViewById(R.id.accountName)
         accountId = findViewById(R.id.accountId)
         accountPw = findViewById(R.id.accountPw)
-
 
         backBtn.setOnClickListener{
             var intent = Intent(this, MyPageActivity::class.java)

@@ -31,7 +31,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
-
         <activity
             android:name=".EditAccountActivity"
             android:exported="false" />
@@ -61,18 +60,20 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".StartupActivity"
             android:exported="true"
-            android:theme="@style/Theme.Splash" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:theme="@style/Theme.Splash">
+             <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
             <meta-data
-                android:name="string"
-                android:value="" />
+            android:name="android.app.lib_name"
+            android:value=""/>
         </activity>
     </application>
-
 </manifest>

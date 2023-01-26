@@ -26,5 +26,6 @@ class HistoryActivity : AppCompatActivity() {
         //폰트 사이즈 설정
         val font: Float = (application as textApplication).getSize()
         emptyText.textSize = font
+
     }
 }

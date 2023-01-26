@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.annotation.Dimension
 import androidx.appcompat.app.AppCompatActivity
 
+
 class FontSizeActivity : AppCompatActivity() {
 
     lateinit var backBtn: Button

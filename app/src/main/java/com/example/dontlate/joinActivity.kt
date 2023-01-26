@@ -15,7 +15,7 @@ class joinActivity : AppCompatActivity() {
 
     //중복 확인 버튼
     lateinit var checkBtn: AppCompatButton
-
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_join)

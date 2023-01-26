@@ -1,14 +1,11 @@
 package com.example.dontlate
 
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 
 class SettingActivity : AppCompatActivity() {
-    //폰트 사이즈 설정
-    lateinit var notificationText: TextView
 
     lateinit var backBtn: Button
     lateinit var fontSizeBtn: Button
@@ -21,6 +18,7 @@ class SettingActivity : AppCompatActivity() {
         fontSizeBtn = findViewById(R.id.fontSizeBtn)
         notificationText = findViewById(R.id.notificationText)
 
+
         backBtn.setOnClickListener{
             var intent = Intent(this, MyPageActivity::class.java)
             startActivity(intent)
@@ -31,10 +29,10 @@ class SettingActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
         //폰트 사이즈 설정
         val font: Float = (application as textApplication).getSize()
         notificationText.textSize = font
         fontSizeBtn.textSize = font
+
     }
 }
