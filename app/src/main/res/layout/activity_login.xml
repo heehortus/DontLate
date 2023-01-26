@@ -111,7 +111,7 @@
         android:textColor="#2E2E2E"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:backgroundTint="#FFD249"
+        app:backgroundTint="@color/orange"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

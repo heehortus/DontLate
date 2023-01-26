@@ -131,7 +131,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#00ff0000"
-            android:drawableTop="@drawable/baseline_person_outline_24"
+            android:drawableTop="@drawable/mypage"
             app:layout_constraintBottom_toBottomOf="parent" />
     </LinearLayout>
 

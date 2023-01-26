@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F9F8F6"
-    tools:context=".MyPageActivity">
+    tools:context=".MyPageFragment">
 
     <ImageView
         android:id="@+id/img_user"
         android:layout_width="100dp"
         android:layout_height="97dp"
-        android:src="@drawable/profile"
+        android:src="@drawable/user"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -43,8 +42,8 @@
         android:background="#00ff0000"
         android:drawableLeft="@drawable/baseline_person_24"
         android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
-        android:gravity="left"
         android:text="  계정"
+        android:textAlignment="viewStart"
         android:textColor="#000000"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -78,11 +77,11 @@
         android:background="#00ff0000"
         android:drawableLeft="@drawable/baseline_insert_drive_file_24"
         android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
-        android:gravity="left"
         android:text="  기록"
         android:textColor="#000000"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:textAlignment="viewStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -111,18 +110,18 @@
         android:background="#00ff0000"
         android:drawableLeft="@drawable/baseline_settings_24"
         android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
-        android:gravity="left"
         android:text="  설정"
         android:textColor="#000000"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:textAlignment="viewStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/historyBtn" />
 
     <TextView
-        android:id="@+id/version"
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
@@ -130,7 +129,7 @@
         android:textColor="#000000"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/versionInfo"
+        app:layout_constraintEnd_toStartOf="@+id/textView3"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/settingBtn" />
@@ -146,29 +145,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/versionInfo"></View>
-
+        app:layout_constraintTop_toBottomOf="@+id/textView3"></View>
 
     <Button
         android:id="@+id/logoutBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="38dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:background="#00ff0000"
-        android:gravity="left"
         android:text="로그아웃"
+        android:textAlignment="viewStart"
         android:textColor="@color/deep_orange"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view2" />
 
     <TextView
-        android:id="@+id/versionInfo"
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="215dp"
@@ -179,6 +177,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/version"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/settingBtn" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
