@@ -30,7 +30,7 @@ open class EditAccountActivity : AppCompatActivity() {
 
     //기본 제공 버튼
     lateinit var editFinBtn: Button
-    lateinit var backBtn: ImageButton
+    lateinit var backBtn: Button
 
     //정보 수정 시 팝업 제공
     var dialog : CustomDialog? = null

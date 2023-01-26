@@ -30,6 +30,7 @@ class FontSizeActivity : AppCompatActivity() {
         backBtn.setOnClickListener{
             var intent = Intent(this, SettingActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         //폰트 크기 변경

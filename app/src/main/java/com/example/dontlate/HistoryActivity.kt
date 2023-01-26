@@ -19,8 +19,7 @@ class HistoryActivity : AppCompatActivity() {
         emptyText = findViewById(R.id.emptyText)
 
         backBtn.setOnClickListener{
-            var intent = Intent(this, MyPageFragment::class.java)
-            startActivity(intent)
+            finish()
         }
 
         //폰트 사이즈 설정
