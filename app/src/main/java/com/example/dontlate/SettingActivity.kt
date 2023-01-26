@@ -4,11 +4,13 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 
 class SettingActivity : AppCompatActivity() {
 
     lateinit var backBtn: Button
     lateinit var fontSizeBtn: Button
+    lateinit var notificationText : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,8 +22,9 @@ class SettingActivity : AppCompatActivity() {
 
 
         backBtn.setOnClickListener{
-            var intent = Intent(this, MyPageActivity::class.java)
-            startActivity(intent)
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.mainFrameLayout, MyPageFragment())
+                .addToBackStack(null).commit()
         }
 
         fontSizeBtn.setOnClickListener{

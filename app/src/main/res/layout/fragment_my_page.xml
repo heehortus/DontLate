@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MyPageFragment">
+    android:background="#F9F8F6">
 
     <ImageView
         android:id="@+id/img_user"
         android:layout_width="100dp"
         android:layout_height="97dp"
-        android:src="@drawable/user"
+        android:src="@drawable/profile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -43,10 +43,10 @@
         android:drawableLeft="@drawable/baseline_person_24"
         android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
         android:text="  계정"
-        android:textAlignment="viewStart"
         android:textColor="#000000"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:textAlignment="textStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -81,7 +81,7 @@
         android:textColor="#000000"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:textAlignment="viewStart"
+        android:textAlignment="textStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -114,14 +114,14 @@
         android:textColor="#000000"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:textAlignment="viewStart"
+        android:textAlignment="textStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/historyBtn" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/version"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
@@ -129,7 +129,7 @@
         android:textColor="#000000"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/textView3"
+        app:layout_constraintEnd_toStartOf="@+id/versionInfo"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/settingBtn" />
@@ -145,7 +145,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"></View>
+        app:layout_constraintTop_toBottomOf="@+id/versionInfo"></View>
+
 
     <Button
         android:id="@+id/logoutBtn"
@@ -156,7 +157,7 @@
         android:layout_marginEnd="24dp"
         android:background="#00ff0000"
         android:text="로그아웃"
-        android:textAlignment="viewStart"
+        android:textAlignment="textStart"
         android:textColor="@color/deep_orange"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -166,7 +167,7 @@
         app:layout_constraintTop_toTopOf="@+id/view2" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/versionInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="215dp"
@@ -177,7 +178,6 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintStart_toEndOf="@+id/version"
         app:layout_constraintTop_toBottomOf="@+id/settingBtn" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

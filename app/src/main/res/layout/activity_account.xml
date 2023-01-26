@@ -73,7 +73,8 @@
             android:text="닉네임"
             android:textColor="#000000"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:translationY="5dp" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="305dp"
@@ -117,7 +118,8 @@
             android:text="아이디"
             android:textColor="#000000"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:translationY="5dp" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="305dp"
@@ -154,14 +156,15 @@
 
         <TextView
             android:id="@+id/passwordText"
-            android:layout_width="20dp"
+            android:layout_width="71dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:gravity="center"
             android:text="비밀번호"
             android:textColor="#000000"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:translationY="5dp" />
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -202,10 +205,10 @@
 
     <Button
         android:id="@+id/quitBtn"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="24dp"
+        android:layout_width="371dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="16dp"
         android:background="#00ff0000"
         android:gravity="center|left"
         android:text="회원탈퇴"
@@ -216,8 +219,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.511" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
     <View
         android:id="@+id/view2"

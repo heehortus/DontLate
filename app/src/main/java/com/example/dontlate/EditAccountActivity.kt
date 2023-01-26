@@ -3,7 +3,6 @@ package com.example.dontlate
 import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -21,11 +20,8 @@ import androidx.core.app.ActivityCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.TransformationUtils.circleCrop
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.bumptech.glide.request.Request
 import com.bumptech.glide.request.RequestOptions
-import com.bumptech.glide.request.target.Target
 import com.google.android.material.textfield.TextInputEditText
-import org.w3c.dom.Text
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -63,6 +59,7 @@ open class EditAccountActivity : AppCompatActivity() {
         backBtn.setOnClickListener {
             var intent = Intent(this, AccountActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
 

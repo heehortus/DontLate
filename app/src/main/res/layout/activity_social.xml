@@ -179,7 +179,6 @@
                 android:background="@drawable/social_whitebutton_border"
                 tools:ignore="SpeakableTextPresentCheck"/>
 
-
             <Button
                 android:layout_width="380dp"
                 android:layout_height="100dp"
@@ -196,10 +195,6 @@
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/social_whitebutton_border"
                 tools:ignore="SpeakableTextPresentCheck"/>
-
-
-
-
         </LinearLayout>
     </ScrollView>
 

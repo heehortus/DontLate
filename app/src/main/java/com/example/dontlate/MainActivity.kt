@@ -25,17 +25,22 @@ class MainActivity : AppCompatActivity() {
                 when (item.itemId) {
                     R.id.menu_home -> {
                         supportFragmentManager.beginTransaction()
-                            .replace(R.id.mainFrameLayout, HomeFragment()).commit()
+                            .replace(R.id.mainFrameLayout, HomeFragment())
+                            .addToBackStack(null)
+                            .commit();
                     }
 
                     R.id.menu_mypage -> {
                         supportFragmentManager.beginTransaction()
-                            .replace(R.id.mainFrameLayout, MyPageFragment()).commit()
+                            .replace(R.id.mainFrameLayout, MyPageFragment())
+                            .addToBackStack(null).commit()
                     }
 
                     R.id.menu_social -> {
                         supportFragmentManager.beginTransaction()
-                            .replace(R.id.mainFrameLayout, SocialFragment()).commit()
+                            .replace(R.id.mainFrameLayout, SocialFragment())
+                            .addToBackStack(null)
+                            .commit()
                     }
                 }
 

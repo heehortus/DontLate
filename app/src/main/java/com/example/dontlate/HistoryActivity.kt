@@ -19,7 +19,7 @@ class HistoryActivity : AppCompatActivity() {
         emptyText = findViewById(R.id.emptyText)
 
         backBtn.setOnClickListener{
-            var intent = Intent(this, MyPageActivity::class.java)
+            var intent = Intent(this, MyPageFragment::class.java)
             startActivity(intent)
         }
 
