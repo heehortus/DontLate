@@ -21,6 +21,7 @@ class loginActivity : AppCompatActivity() {
         //화면 확인 위한 임의 설정
         startBtn = findViewById(R.id.startBtn)
 
+        //뒤로 가기 버튼
         backBtn.setOnClickListener{
             var intent = Intent(this, StartupActivity::class.java)
             startActivity(intent)
@@ -29,6 +30,7 @@ class loginActivity : AppCompatActivity() {
         //화면 확인 위한 임의 설정
         startBtn.isEnabled = true
 
+        //시작하기 버튼
         startBtn.setOnClickListener{
             var intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

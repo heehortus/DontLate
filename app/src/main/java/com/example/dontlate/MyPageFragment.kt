@@ -31,9 +31,6 @@ class MyPageFragment : Fragment() {
     //버튼 클릭 리스너
     private fun initButtonOnClick() {
         binding.root.run {
-            binding.logoutBtn.setOnClickListener {
-                dialog!!.start("로그아웃 하시겠어요?", 1, 2, this@MyPageFragment)
-            }
 
             binding.accountBtn.setOnClickListener{
                 val intent = Intent(getActivity(), AccountActivity::class.java)

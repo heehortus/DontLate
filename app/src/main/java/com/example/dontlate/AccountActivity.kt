@@ -33,6 +33,7 @@ class AccountActivity : AppCompatActivity() {
         dialog = CustomDialog(this)
         quitBtn = findViewById(R.id.quitBtn)
 
+        //회원 탈퇴
         quitBtn.setOnClickListener{
             dialog!!.start("정말 탈퇴하시겠어요?", 1, 3, this@AccountActivity)
         }
@@ -48,17 +49,21 @@ class AccountActivity : AppCompatActivity() {
         accountId = findViewById(R.id.accountId)
         accountPw = findViewById(R.id.accountPw)
 
+        //돌아가기 버튼 클릭 리스너
         backBtn.setOnClickListener{
+            //현재 화면 종료
             finish()
         }
 
+        //수정하기 버튼 클릭 리스너
         editBtn.setOnClickListener{
+            //현재 화면 종료, 수정 화면으로 이동
             var intent = Intent(this, EditAccountActivity::class.java)
             startActivity(intent)
             finish()
         }
 
-        //폰트 사이즈 설정
+        //폰트 사이즈 설정 자동화를 위한 텍스트 사이즈 선언
         val font: Float = (application as textApplication).getSize()
         nameText.textSize = font
         idText.textSize = font
