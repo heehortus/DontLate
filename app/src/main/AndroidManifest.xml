@@ -68,5 +68,27 @@
             android:name="android.app.lib_name"
             android:value=""/>
         </activity>
+        <activity android:name=".social14"
+            android:exported="false"/>
+        <activity android:name=".social17"
+            android:exported="false"/>
+        <activity android:name=".social21"
+            android:exported="false"/>
+        <activity android:name=".social25"
+            android:exported="false"/>
+        <activity android:name=".social27"
+            android:exported="false"/>
+        <activity android:name=".social31"
+            android:exported="false"/>
+        <activity android:name=".social32"
+            android:exported="false"/>
+        <activity android:name=".social33"
+            android:exported="false"/>
+        <activity android:name=".social35"
+            android:exported="false"/>
+        <activity android:name=".social36"
+            android:exported="false"/>
+        <activity android:name=".social37"
+            android:exported="false"/>
     </application>
 </manifest>

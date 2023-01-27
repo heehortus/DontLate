@@ -38,16 +38,12 @@
 
     </LinearLayout>
 
-
-
-
-
     <EditText
         android:id="@+id/search_bar"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_margin="16dp"
-        android:background="@drawable/social_greybutton_border"
+        android:background="@drawable/social_graybutton_border"
         android:hint="  관심있는 약속을 검색해보세요."
         android:textSize="16sp"
         android:inputType="text"
@@ -83,7 +79,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/social_whitebutton_greyborder"
+                android:background="@drawable/social_whitebutton_grayborder"
                 android:text="최신"
                 android:textStyle="bold"
                 android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button"
@@ -96,7 +92,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_weight="1"
-                android:background="@drawable/social_whitebutton_greyborder"
+                android:background="@drawable/social_whitebutton_grayborder"
                 android:text="맛집"
                 android:textStyle="bold"
                 android:textColor="@color/dark_gray"
@@ -109,7 +105,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_weight="1"
-                android:background="@drawable/social_whitebutton_greyborder"
+                android:background="@drawable/social_whitebutton_grayborder"
                 android:text="스터디"
                 android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button"
                 android:textStyle="bold"
@@ -122,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_weight="1"
-                android:background="@drawable/social_whitebutton_greyborder"
+                android:background="@drawable/social_whitebutton_grayborder"
                 android:text="운동"
                 android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button"
                 android:textStyle="bold"
@@ -135,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_weight="1"
-                android:background="@drawable/social_whitebutton_greyborder"
+                android:background="@drawable/social_whitebutton_grayborder"
                 android:text="공연"
                 android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button"
                 android:textStyle="bold"
@@ -164,12 +160,21 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/s13_listView"
+                android:id="@+id/s13_listView1"
                 android:layout_width="380dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:background="@drawable/social_whitebutton_border"
                 tools:ignore="SpeakableTextPresentCheck" />
+
+            <Button
+                android:id="@+id/s13_listView2"
+                android:layout_width="380dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/social_whitebutton_border"
+                tools:ignore="SpeakableTextPresentCheck"/>
 
             <Button
                 android:layout_width="380dp"

@@ -35,7 +35,7 @@ class AccountActivity : AppCompatActivity() {
 
         //회원 탈퇴
         quitBtn.setOnClickListener{
-            dialog!!.start("정말 탈퇴하시겠어요?", 1, 3, this@AccountActivity)
+            dialog!!.start("정말 탈퇴하시겠어요?", 1, 2, this@AccountActivity)
         }
 
         backBtn = findViewById(R.id.backBtnA)

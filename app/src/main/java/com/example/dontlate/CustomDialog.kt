@@ -39,36 +39,7 @@ open class CustomDialog(context: Context) : AppCompatActivity() {
                 //confirm.setOnClickListener : https://onedaycodeing.tistory.com/155
             }
 
-            2-> { //취소/확인 버튼 모두 존재
-                // 1 : 로그아웃 팝업, 2: 정보 수정 팝업
-                dialog.setContentView(R.layout.logout_popup)
-                body = dialog.findViewById(R.id.mainText)
-                body.text = bodyMessage
-
-                confirm = dialog.findViewById(R.id.checkBtn)
-                cancel = dialog.findViewById(R.id.cancelBtn)
-
-                cancel.setOnClickListener {//취소 버튼
-                    dialog.dismiss()
-                }
-
-                confirm.setOnClickListener {//확인 버튼
-                    when(mode) {
-                        1 -> {
-                            var intent = Intent(context, loginActivity::class.java)
-                            context.startActivity(intent)
-                        }
-
-                        2 -> {
-                            var intent = Intent(context, AccountActivity::class.java)
-                            context.startActivity(intent)
-                        }
-                    }
-                }
-
-            }
-
-            3 -> { //회원 탈퇴 다이얼로그
+            2 -> { //회원 탈퇴 다이얼로그
                 dialog.setContentView(R.layout.withdrawal_popup)
                 body = dialog.findViewById(R.id.mainText2)
                 body.text = bodyMessage
