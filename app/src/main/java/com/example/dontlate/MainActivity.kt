@@ -19,10 +19,12 @@ class MainActivity : AppCompatActivity() {
         initBottomNavigation()
     }
 
+    //네비게이션 초기화 함수
     private fun initBottomNavigation() {
         binding.bottomNavi.run {
             setOnItemSelectedListener { item ->
                 when (item.itemId) {
+                    //네비게이션 홈 버튼 클릭
                     R.id.menu_home -> {
                         supportFragmentManager.beginTransaction()
                             .replace(R.id.mainFrameLayout, HomeFragment())
@@ -30,12 +32,14 @@ class MainActivity : AppCompatActivity() {
                             .commit();
                     }
 
+                    //네비게이션 마이 페이지 버튼 클릭
                     R.id.menu_mypage -> {
                         supportFragmentManager.beginTransaction()
                             .replace(R.id.mainFrameLayout, MyPageFragment())
                             .addToBackStack(null).commit()
                     }
 
+                    //네비게이션 약속 생성 버튼 클릭
                     R.id.menu_social -> {
                         supportFragmentManager.beginTransaction()
                             .replace(R.id.mainFrameLayout, SocialFragment())
@@ -47,6 +51,7 @@ class MainActivity : AppCompatActivity() {
                 true
             }
 
+            //기본 값 - 홈으로 설정
             selectedItemId = R.id.menu_home
         }
     }
