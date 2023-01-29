@@ -83,6 +83,7 @@ open class EditAccountActivity : AppCompatActivity() {
         userDbManager = userDBManager(this@EditAccountActivity, "user_info", null, 1)
         var cursor : Cursor
 
+        //일치하는 아이디의 데이터베이스 값 받아오기
         sqlitedb = userDbManager.readableDatabase
         cursor = sqlitedb.rawQuery("SELECT * FROM user_info WHERE ID = '$user_id';", null)
 
@@ -98,41 +99,43 @@ open class EditAccountActivity : AppCompatActivity() {
         editId.setText(str_id)
         editPw.setText(str_password)
 
-
+        //변경 사항 확인
         backBtn.setOnClickListener {
+            var edt_name : String = editName.text.toString()
+            var edt_password : String = editPw.text.toString()
+
+
+            sqlitedb = userDbManager.writableDatabase
+            sqlitedb.execSQL("UPDATE user_info SET name = '$edt_name', password = '$edt_password' WHERE ID = '$user_id'")
+            sqlitedb.close()
+
             var intent = Intent(this, AccountActivity::class.java)
+            intent.putExtra("user_id", user_id)
             startActivity(intent)
             finish()
         }
-
 
         //정보 수정 반영 다이얼로그
         dialog = CustomDialog(this)
 
         editFinBtn.setOnClickListener {
-            var edt_name : String = editName.text.toString()
-            var edt_password : String = editPw.text.toString()
+            var edt_name: String = editName.text.toString()
+            var edt_password: String = editPw.text.toString()
 
-            if(edt_name == str_name && edt_password == str_password) {
+            //변경 사항 없는 경우
+            if (edt_name == str_name && edt_password == str_password) {
                 Toast.makeText(this@EditAccountActivity, "변경사항이 없습니다.", Toast.LENGTH_SHORT).show()
+            }
 
-                /*
-                var intent = Intent(this, AccountActivity::class.java)
-                startActivity(intent)
-                 */
-
-            } else {
+            //변경 사항 있는 경우
+            else {
                 sqlitedb = userDbManager.writableDatabase
                 sqlitedb.execSQL("UPDATE user_info SET name = '$edt_name', password = '$edt_password' WHERE ID = '$user_id'")
                 sqlitedb.close()
                 Toast.makeText(this@EditAccountActivity, "변경되었습니다.", Toast.LENGTH_SHORT).show()
-
-
-                var intent = Intent(this, AccountActivity::class.java)
-                startActivity(intent)
+                finish()
             }
         }
-
 
 
         //프로필 사진 변경 코드

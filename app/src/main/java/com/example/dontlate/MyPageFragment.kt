@@ -1,13 +1,13 @@
 package com.example.dontlate
 
 import android.content.Intent
-import android.database.Cursor
-import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.example.dontlate.databinding.FragmentMyPageBinding
 
 class MyPageFragment : Fragment() {
@@ -27,11 +27,14 @@ class MyPageFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMyPageBinding.inflate(inflater, container, false)
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        //버튼 리스너
         initButtonOnClick()
 
         var bundle = arguments
@@ -62,7 +65,9 @@ class MyPageFragment : Fragment() {
             }
         }
     }
-    
 
+    override fun onResume() {
+        super.onResume()
 
+    }
 }

@@ -1,7 +1,6 @@
 package com.example.dontlate
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Intent
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
@@ -9,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import com.google.android.material.textfield.TextInputEditText
 
 
@@ -21,9 +19,6 @@ class AccountActivity : AppCompatActivity() {
     // 로그인 정보 받아오기 : 데이터베이스
     lateinit var userDbManager : userDBManager
     lateinit var sqlitedb: SQLiteDatabase
-    lateinit var str_name : String
-    lateinit var str_id : String
-    lateinit var str_password : String
 
     //폰트 크기 변형
     lateinit var nameText: TextView
@@ -42,7 +37,7 @@ class AccountActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_account)
 
-
+        //위젯 아이디 값 가져오기
         backBtn = findViewById(R.id.backBtnA)
         editBtn = findViewById(R.id.editBtn)
 
@@ -53,7 +48,6 @@ class AccountActivity : AppCompatActivity() {
         accountId = findViewById(R.id.accountId)
         accountPw = findViewById(R.id.accountPw)
 
-
         // 로그인 정보 받아오기
         val intent = intent
         val user_id = intent.getStringExtra("user_id").toString()
@@ -62,19 +56,18 @@ class AccountActivity : AppCompatActivity() {
         userDbManager = userDBManager(this@AccountActivity, "user_info", null, 1)
         var cursor : Cursor
 
+        //일치하는 아이디의 데이터베이스 값 받아오기
         sqlitedb = userDbManager.readableDatabase
         cursor = sqlitedb.rawQuery("SELECT * FROM user_info WHERE ID = '$user_id';", null)
 
         while (cursor.moveToNext()) {
-            str_id = cursor.getString(cursor.getColumnIndex("ID")).toString()
-            str_password = cursor.getString(cursor.getColumnIndex("password")).toString()
-            str_name = cursor.getString(cursor.getColumnIndex("name")).toString()
+            //회원 정보 반영
+            accountName.setText(cursor.getString(cursor.getColumnIndex("name")).toString())
+            accountId.setText(cursor.getString(cursor.getColumnIndex("ID")).toString())
+            accountPw.setText(cursor.getString(cursor.getColumnIndex("password")).toString())
         }
 
-        //회원 정보 반영
-        accountName.setText(str_name)
-        accountId.setText(str_id)
-        accountPw.setText(str_password)
+        sqlitedb.close()
 
 
         //회원 탈퇴 : 팝업 설정
@@ -88,12 +81,10 @@ class AccountActivity : AppCompatActivity() {
 
         //돌아가기 버튼 클릭 리스너
         backBtn.setOnClickListener{
-            /**
-             * 화면 전환 문제 존재 :
-             * 프로필 수정 후 돌아가기 버튼 클릭 시 오류 발생
-             */
+            //액티비티 종료
             finish()
         }
+
 
         //수정하기 버튼 클릭 리스너
         editBtn.setOnClickListener{
@@ -115,4 +106,5 @@ class AccountActivity : AppCompatActivity() {
         editBtn.textSize = font
         quitBtn.textSize = font
     }
+
 }

@@ -39,7 +39,6 @@ class social14 : AppCompatActivity() {
             finish()
         }
 
-
         nextBtn.setOnClickListener {
             var intent = Intent(this, social17::class.java)
             startActivity(intent)

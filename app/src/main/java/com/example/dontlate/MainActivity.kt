@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
         initBottomNavigation()
     }
 
-
     /**
      * 네비게이션 초기화 함수
      * 각 Fragment에 유저 정보를 전달하기 위한 코드 :
