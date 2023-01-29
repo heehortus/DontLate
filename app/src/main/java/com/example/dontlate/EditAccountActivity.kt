@@ -1,8 +1,12 @@
 package com.example.dontlate
 
+import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.database.Cursor
+import android.database.sqlite.SQLiteDatabase
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -18,7 +22,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.TransformationUtils.circleCrop
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.textfield.TextInputEditText
@@ -32,6 +35,13 @@ open class EditAccountActivity : AppCompatActivity() {
     lateinit var editFinBtn: Button
     lateinit var backBtn: Button
 
+    // 로그인 정보 받아오기 : 데이터베이스
+    lateinit var userDbManager : userDBManager
+    lateinit var sqlitedb: SQLiteDatabase
+    lateinit var str_name : String
+    lateinit var str_id : String
+    lateinit var str_password : String
+
     //정보 수정 시 팝업 제공
     var dialog : CustomDialog? = null
 
@@ -44,17 +54,50 @@ open class EditAccountActivity : AppCompatActivity() {
     lateinit var pwCheckText : TextView
     lateinit var idText : TextView
     lateinit var editName : TextInputEditText
-    lateinit var checkPw : TextInputEditText
+    lateinit var editPw : TextInputEditText
     lateinit var editId : TextInputEditText
 
 
+    @SuppressLint("Range")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_account)
 
-        //기본 제공 버튼
+
         editFinBtn = findViewById(R.id.editFinBtn)
         backBtn = findViewById(R.id.backBtnEA)
+
+        nameText = findViewById(R.id.nameText)
+        editName = findViewById(R.id.editName)
+        pwCheckText = findViewById(R.id.pwCheckText)
+        editPw = findViewById(R.id.editPw)
+        idText = findViewById(R.id.idText)
+        editId = findViewById(R.id.editId)
+
+
+        // 로그인 정보 받아오기
+        val intent = intent
+        val user_id = intent.getStringExtra("user_id").toString()
+
+        // 데이터베이스 연결
+        userDbManager = userDBManager(this@EditAccountActivity, "user_info", null, 1)
+        var cursor : Cursor
+
+        sqlitedb = userDbManager.readableDatabase
+        cursor = sqlitedb.rawQuery("SELECT * FROM user_info WHERE ID = '$user_id';", null)
+
+        while (cursor.moveToNext()) {
+            str_id = cursor.getString(cursor.getColumnIndex("ID")).toString()
+            str_password = cursor.getString(cursor.getColumnIndex("password")).toString()
+            str_name = cursor.getString(cursor.getColumnIndex("name")).toString()
+        }
+        sqlitedb.close()
+
+        //회원 정보 반영
+        editName.setText(str_name)
+        editId.setText(str_id)
+        editPw.setText(str_password)
+
 
         backBtn.setOnClickListener {
             var intent = Intent(this, AccountActivity::class.java)
@@ -67,7 +110,27 @@ open class EditAccountActivity : AppCompatActivity() {
         dialog = CustomDialog(this)
 
         editFinBtn.setOnClickListener {
-            dialog!!.start("이대로 수정하시겠어요?", 2, 2, this@EditAccountActivity)
+            var edt_name : String = editName.text.toString()
+            var edt_password : String = editPw.text.toString()
+
+            if(edt_name == str_name && edt_password == str_password) {
+                Toast.makeText(this@EditAccountActivity, "변경사항이 없습니다.", Toast.LENGTH_SHORT).show()
+
+                /*
+                var intent = Intent(this, AccountActivity::class.java)
+                startActivity(intent)
+                 */
+
+            } else {
+                sqlitedb = userDbManager.writableDatabase
+                sqlitedb.execSQL("UPDATE user_info SET name = '$edt_name', password = '$edt_password' WHERE ID = '$user_id'")
+                sqlitedb.close()
+                Toast.makeText(this@EditAccountActivity, "변경되었습니다.", Toast.LENGTH_SHORT).show()
+
+
+                var intent = Intent(this, AccountActivity::class.java)
+                startActivity(intent)
+            }
         }
 
 
@@ -117,19 +180,11 @@ open class EditAccountActivity : AppCompatActivity() {
         }
 
 
-        //폰트 사이즈 변경
-        nameText = findViewById(R.id.nameText)
-        editName = findViewById(R.id.editName)
-        pwCheckText = findViewById(R.id.pwCheckText)
-        checkPw = findViewById(R.id.checkPw)
-        idText = findViewById(R.id.idText)
-        editId = findViewById(R.id.editId)
-
         val font: Float = (application as textApplication).getSize()
         nameText.textSize = font
         editName.textSize = font
         pwCheckText.textSize = font
-        checkPw.textSize = font
+        editPw.textSize = font
         idText.textSize = font
         editId.textSize = font
         editFinBtn.textSize = font

@@ -8,7 +8,6 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.dontlate.social17.*
 import java.util.*
 
 class social17 : AppCompatActivity() {
@@ -79,7 +78,7 @@ class social17 : AppCompatActivity() {
     internal inner class LctClickListener : View.OnClickListener {
         override fun onClick(v: View) {
             // lctBtn Click 이벤트 처리 구간
-            val intent = Intent(applicationContext, social21::class.java)
+            val intent = Intent(applicationContext, SearchActivity::class.java)
             startActivity(intent)
         }
     }

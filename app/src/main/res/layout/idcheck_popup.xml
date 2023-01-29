@@ -45,36 +45,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subText"></View>
 
-    <View
-        android:id="@+id/view2"
-        android:layout_width="1sp"
-        android:layout_height="50dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/gradient"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/subText"></View>
-
-    <Button
-        android:id="@+id/cancelBtn"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:background="#00ff0000"
-        android:text="취소"
-        android:textColor="#707070"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view"
-        app:layout_constraintVertical_bias="1.0" />
-
     <Button
         android:id="@+id/idCheck"
-        android:layout_width="150dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
         android:background="#00ff0000"
         android:text="확인"

@@ -1,6 +1,8 @@
 package com.example.dontlate
 
 import android.content.Intent
+import android.database.Cursor
+import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,8 +14,13 @@ class MyPageFragment : Fragment() {
 
     lateinit var binding : FragmentMyPageBinding
 
-    //팝업 창
+    // 팝업 창
     var dialog : CustomDialog? = null
+
+    // 닉네임 반영
+    lateinit var user_id : String
+    lateinit var user_name : String
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,6 +33,12 @@ class MyPageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initButtonOnClick()
+
+        var bundle = arguments
+        user_id = bundle?.getString("user_id").toString()
+        user_name = bundle?.getString("user_name").toString()
+
+        binding.name.text = "$user_name 님"
     }
 
     //버튼 클릭 리스너
@@ -34,6 +47,7 @@ class MyPageFragment : Fragment() {
 
             binding.accountBtn.setOnClickListener{
                 val intent = Intent(getActivity(), AccountActivity::class.java)
+                intent.putExtra("user_id", user_id)
                 startActivity(intent)
             }
 
@@ -48,9 +62,7 @@ class MyPageFragment : Fragment() {
             }
         }
     }
-
-
-
+    
 
 
 }
