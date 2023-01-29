@@ -5,7 +5,10 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <uses-feature android:name="android.hardware.camera2" />
 
@@ -72,7 +75,7 @@
             android:exported="false"/>
         <activity android:name=".social17"
             android:exported="false"/>
-        <activity android:name=".social21"
+        <activity android:name=".SearchActivity"
             android:exported="false"/>
         <activity android:name=".social25"
             android:exported="false"/>
@@ -90,5 +93,9 @@
             android:exported="false"/>
         <activity android:name=".social37"
             android:exported="false"/>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyD5UmREhMELviR-BZVwTs8FZrSv7qHOe2E" />
     </application>
 </manifest>
