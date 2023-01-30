@@ -1,10 +1,17 @@
 package com.example.dontlate
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.RequestOptions
 import com.example.dontlate.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activity_my_page.*
+import kotlin.properties.Delegates
 
 
 class MainActivity : AppCompatActivity() {
@@ -15,6 +22,8 @@ class MainActivity : AppCompatActivity() {
     //회원 정보 받아오기
     lateinit var user_id : String
     lateinit var user_name : String
+    lateinit var user_image : String
+    var fontSize : Float = 16F
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +34,8 @@ class MainActivity : AppCompatActivity() {
         val intent = intent
         user_id = intent.getStringExtra("user_id").toString()
         user_name = intent.getStringExtra("user_name").toString()
+        user_image = intent.getStringExtra("user_image").toString()
+        fontSize = intent.getFloatExtra("fontSize", 16F)
 
         initBottomNavigation()
     }
@@ -37,7 +48,7 @@ class MainActivity : AppCompatActivity() {
             var bundle = Bundle()
 
             bundle.putString("user_id", user_id)
-            bundle.putString("user_name", user_name
+            bundle.putString("user_name", user_name)
             myPageFragment.arguments = bundle
      *
      * user_id 정보를 전달하여 각 fragment에서 db 활용
@@ -61,7 +72,9 @@ class MainActivity : AppCompatActivity() {
 
                         bundle.putString("user_id", user_id)
                         bundle.putString("user_name", user_name)
-                        myPageFragment.arguments = bundle // fragment의 arguments에 데이터를 담은 bundle을 넘겨줌
+                        bundle.putString("user_image", user_image)
+                        bundle.putFloat("fontSize", fontSize)
+                        myPageFragment.arguments = bundle // fragment의 arguments에 데이터를 담은 bundle을 넘겨줌.
 
                         supportFragmentManager.beginTransaction()
                             .replace(R.id.mainFrameLayout, myPageFragment)
@@ -80,8 +93,18 @@ class MainActivity : AppCompatActivity() {
                 true
             }
 
-            //기본 값 - 홈으로 설정
-            selectedItemId = R.id.menu_home
+            /*
+                각 요청에 따라 보이는 화면을 다르게 설정
+                1) Home 화면으로 넘어와야 할 경우: Intent 값으로 selectedItem = "home" 전달
+                2) myPage 화면으로 넘어와야 할 경우: Intent 값으로 selectedItem = "mypage" 전달
+                3) social 화면으로 넘어와야 할 경우: Intent 값으로 selectedItem = "social" 전달
+             */
+
+            var selectedItem : String = intent.getStringExtra("selectedItem").toString()
+            if(selectedItem == "home") selectedItemId = R.id.menu_home
+            else if (selectedItem == "mypage") selectedItemId = R.id.menu_mypage
+            else if (selectedItem == "social") selectedItemId = R.id.menu_social
+
         }
     }
 }

@@ -9,8 +9,9 @@
     <ImageView
         android:id="@+id/img_user"
         android:layout_width="100dp"
-        android:layout_height="97dp"
+        android:layout_height="100dp"
         android:src="@drawable/profile"
+        android:requestLegacyExternalStorage="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

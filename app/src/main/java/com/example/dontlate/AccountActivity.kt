@@ -4,11 +4,19 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.textfield.TextInputEditText
+import java.io.File
 
 
 class AccountActivity : AppCompatActivity() {
@@ -19,6 +27,13 @@ class AccountActivity : AppCompatActivity() {
     // 로그인 정보 받아오기 : 데이터베이스
     lateinit var userDbManager : userDBManager
     lateinit var sqlitedb: SQLiteDatabase
+    lateinit var str_name : String
+    lateinit var str_id : String
+    lateinit var str_password : String
+
+    //프로필 사진
+    lateinit var img_user: ImageView
+    lateinit var imageUri: String
 
     //폰트 크기 변형
     lateinit var nameText: TextView
@@ -37,18 +52,23 @@ class AccountActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_account)
 
-        //위젯 아이디 값 가져오기
+        // 버튼 선언 : 뒤로가기, 정보 수정
         backBtn = findViewById(R.id.backBtnA)
         editBtn = findViewById(R.id.editBtn)
 
+        // 폰트 크기 설정 반영을 위한 선언
         nameText = findViewById(R.id.nameText)
         idText = findViewById(R.id.idText)
         pwText = findViewById(R.id.passwordText)
+
+        // 회원 정보
+        img_user = findViewById(R.id.img_user2)
+        img_user.setImageResource(R.drawable.profile)
         accountName = findViewById(R.id.accountName)
         accountId = findViewById(R.id.accountId)
         accountPw = findViewById(R.id.accountPw)
 
-        // 로그인 정보 받아오기
+        // 로그인한 회원 정보 받아오기
         val intent = intent
         val user_id = intent.getStringExtra("user_id").toString()
 
@@ -56,35 +76,50 @@ class AccountActivity : AppCompatActivity() {
         userDbManager = userDBManager(this@AccountActivity, "user_info", null, 1)
         var cursor : Cursor
 
-        //일치하는 아이디의 데이터베이스 값 받아오기
         sqlitedb = userDbManager.readableDatabase
         cursor = sqlitedb.rawQuery("SELECT * FROM user_info WHERE ID = '$user_id';", null)
 
         while (cursor.moveToNext()) {
-            //회원 정보 반영
-            accountName.setText(cursor.getString(cursor.getColumnIndex("name")).toString())
-            accountId.setText(cursor.getString(cursor.getColumnIndex("ID")).toString())
-            accountPw.setText(cursor.getString(cursor.getColumnIndex("password")).toString())
+            str_id = cursor.getString(cursor.getColumnIndex("ID")).toString()
+            str_password = cursor.getString(cursor.getColumnIndex("password")).toString()
+            str_name = cursor.getString(cursor.getColumnIndex("name")).toString()
+            imageUri = cursor.getString(cursor.getColumnIndex("profile")).toString()
         }
 
-        sqlitedb.close()
+        /*
+            회원 정보 반영 :
+            1. 회원이 설정한 프로필 이미지 Uri를 Database에서 불러와 File 형태로 변환 및 적용
+            2. 데이터베이스에서 회원 정보를 불러와 각각의 EditText에 반영
+         */
+        var imageFile = File(imageUri)
+        accountName.setText(str_name)
+        accountId.setText(str_id)
+        accountPw.setText(str_password)
 
+        Glide.with(this)
+            .load(imageFile)
+            .apply(RequestOptions.centerCropTransform().circleCrop())
+            .transition(DrawableTransitionOptions.withCrossFade())
+            .into(img_user)
 
-        //회원 탈퇴 : 팝업 설정
+        // 회원 탈퇴 : 팝업 설정
         dialog = CustomDialog(this)
         quitBtn = findViewById(R.id.quitBtn)
 
-        //회원 탈퇴
+        // 회원 탈퇴
         quitBtn.setOnClickListener{
             dialog!!.start("정말 탈퇴하시겠어요?", 1, 2, this@AccountActivity)
         }
 
         //돌아가기 버튼 클릭 리스너
         backBtn.setOnClickListener{
-            //액티비티 종료
-            finish()
+            var intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("user_id", str_id)
+            intent.putExtra("user_name", str_name)
+            intent.putExtra("user_image", imageUri)
+            intent.putExtra("selectedItem", "mypage")
+            startActivity(intent)
         }
-
 
         //수정하기 버튼 클릭 리스너
         editBtn.setOnClickListener{
@@ -106,5 +141,4 @@ class AccountActivity : AppCompatActivity() {
         editBtn.textSize = font
         quitBtn.textSize = font
     }
-
 }

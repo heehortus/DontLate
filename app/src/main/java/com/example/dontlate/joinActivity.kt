@@ -1,24 +1,30 @@
 package com.example.dontlate
 
 import android.annotation.SuppressLint
+import android.content.ContentResolver
 import android.content.Intent
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
+import android.net.Uri
 import android.os.Bundle
+import android.text.InputFilter
+import android.text.InputFilter.LengthFilter
 import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.idcheck_popup.*
+import java.util.regex.Pattern
+
 
 class joinActivity : AppCompatActivity() {
 
     lateinit var backBtn: Button
     lateinit var loginBtn: Button
 
-    //회원가입 기능 구현
+    // 회원가입 기능 구현
     lateinit var userDbManager: userDBManager
     lateinit var personnelDBManager: personnelDBManager
     lateinit var sqlitedb: SQLiteDatabase
@@ -27,44 +33,72 @@ class joinActivity : AppCompatActivity() {
     lateinit var passwordInput : TextInputEditText
     lateinit var nameInput : TextInputEditText
 
-    //중복 확인
+    // 중복 확인
     lateinit var checkBtn: AppCompatButton
-    var use : Int = 0
-    var validate : Boolean = false
+    var use : Int = 0 // 중복 확인 버튼 사용 유무 판단
+    var validate : Boolean = false // 아이디 중복 확인 식별자
 
-    //중복 시 팝업 제공
+    // 팝업 다이얼로그
     var dialog : CustomDialog? = null
-    
+
+
     @SuppressLint("Range")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_join)
 
+        // 기본 버튼 선언
         backBtn = findViewById(R.id.backBtnA)
         loginBtn = findViewById(R.id.loginBtn)
 
-        //회원가입 기능 구현
+        // 회원가입 기능 구현
         startBtn = findViewById(R.id.startBtn)
         idInput = findViewById(R.id.idInput)
         passwordInput = findViewById(R.id.passwordInput)
         nameInput = findViewById(R.id.nameInput)
 
-        //중복 확인 다이얼로그
+        //중복 확인 버튼
+        checkBtn = findViewById(R.id.checkBtn)
+
+        // 팝업 다이얼로그 선언
         dialog = CustomDialog(this)
+
+
+        /**
+         * 특수문자 입력 제한 : Database 형성 시 특수문자가 포함되면 형성할 수 없음
+         *    - 아이디, 이름 특수문자 입력 불가
+         */
+        idInput.setFilters(arrayOf(InputFilter { source, start, end, dest, dstart, dend ->
+            val ps: Pattern =
+                Pattern.compile("^[a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ\\u318D\\u119E\\u11A2\\u2022\\u2025a\\u00B7\\uFE55]+$")
+            if (source == "" || ps.matcher(source).matches()) {
+                return@InputFilter source
+            }
+            dialog!!.start("특수문자는 입력할 수 없습니다.", 1, 3, this@joinActivity)
+            ""
+        }, LengthFilter(9)))
+
+        nameInput.setFilters(arrayOf(InputFilter { source, start, end, dest, dstart, dend ->
+            val ps: Pattern =
+                Pattern.compile("^[a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ\\u318D\\u119E\\u11A2\\u2022\\u2025a\\u00B7\\uFE55]+$")
+            if (source == "" || ps.matcher(source).matches()) {
+                return@InputFilter source
+            }
+            dialog!!.start("특수문자는 입력할 수 없습니다.", 1, 3, this@joinActivity)
+            ""
+        }, LengthFilter(9)))
+
 
         // 데이터베이스 연결
         userDbManager = userDBManager(this@joinActivity, "user_info", null, 1)
         var cursor : Cursor
 
-        //중복 확인
-        checkBtn = findViewById(R.id.checkBtn)
-
-        checkBtn.setOnClickListener {
+        checkBtn.setOnClickListener { // 중복 확인 버튼 클릭 리스너
             var str_ID : String = idInput.text.toString()
             var idCheck : String
 
-            if(str_ID.isEmpty()) {
-                Toast.makeText(this@joinActivity, "아이디를 입력하세요.", Toast.LENGTH_SHORT).show()
+            if(str_ID.isEmpty()) { // 아이디 입력창이 비어있을 경우 Dialog 형성
+                dialog!!.start("아이디를 입력하세요.", 1, 3, this@joinActivity)
                 return@setOnClickListener
             }
 
@@ -75,22 +109,23 @@ class joinActivity : AppCompatActivity() {
                 idCheck = cursor.getString(cursor.getColumnIndex("ID")).toString()
 
                 if (str_ID == idCheck) {
+                    // Database 내 원하는 아이디를 사용하는 회원이 존재하지 않을 경우 validate = true 처리
                     validate = false
                     break
                 } else
                     validate = true
             }
 
-            if (validate) {
+            if (validate) { // 중복 확인을 통해 사용 가능한 ID임이 판단되었다면,
                 checkBtn.setBackgroundDrawable(getDrawable(R.drawable.btn_clicked))
                 checkBtn.text = "확인 완료"
                 checkBtn.setTextColor(Color.parseColor("#5F893E"))
-                Toast.makeText(this@joinActivity, "사용 가능한 ID입니다.", Toast.LENGTH_SHORT).show()
-                use = 1
+                dialog!!.start("사용 가능한 ID입니다.", 1, 3, this@joinActivity)
+                use = 1 // 중복 확인 버튼 사용 체크
                 idInput.isFocusable = false
                 checkBtn.isEnabled = false
             } else {
-                dialog!!.start("이미 중복된 ID입니다.", 1, 1, this@joinActivity)
+                dialog!!.start("이미 사용 중인 ID입니다.", 1, 1, this@joinActivity)
             }
 
             cursor.close()
@@ -103,20 +138,26 @@ class joinActivity : AppCompatActivity() {
             var str_name : String = nameInput.text.toString()
             var str_ID : String = idInput.text.toString()
             var str_password : String = passwordInput.text.toString()
-            var str_profile : String = ""
+            var str_profile : String = Uri.Builder() // 기본 프로필의 Uri를 Database에 등록 - 초깃값
+                .scheme(ContentResolver.SCHEME_ANDROID_RESOURCE)
+                .authority(resources.getResourcePackageName(R.drawable.profile))
+                .appendPath(resources.getResourceTypeName(R.drawable.profile))
+                .appendPath(resources.getResourceEntryName(R.drawable.profile))
+                .build()
+                .toString()
 
-            if(str_ID.isEmpty()) {
-                Toast.makeText(this@joinActivity, "아이디를 입력하세요.", Toast.LENGTH_SHORT).show()
+            if(str_ID.isEmpty()) { // 아이디 입력창이 비어있을 경우 회원가입 불가
+                dialog!!.start("아이디를 입력하세요.", 1, 3, this@joinActivity)
                 return@setOnClickListener
             }
 
-            if(str_password.isEmpty()) {
-                Toast.makeText(this@joinActivity, "비밀번호를 입력하세요.", Toast.LENGTH_SHORT).show()
+            if(str_password.isEmpty()) { // 비밀번호 입력창이 비어있을 경우 회원가입 불가
+                dialog!!.start("비밀번호를 입력하세요.", 1, 3, this@joinActivity)
                 return@setOnClickListener
             }
 
-            if(str_name.isEmpty()) {
-                Toast.makeText(this@joinActivity, "닉네임을 입력하세요.", Toast.LENGTH_SHORT).show()
+            if(str_name.isEmpty()) { // 닉네임 입력창이 비어있을 경우 회원가입 불가
+                dialog!!.start("닉네임을 입력하세요.", 1, 3, this@joinActivity)
                 return@setOnClickListener
             }
 
@@ -127,13 +168,13 @@ class joinActivity : AppCompatActivity() {
                 sqlitedb.close()
 
                 /**
-                 * 개인 데이터를 저장할 Database 생성
+                 * 개인 데이터를 저장할 Database 생성 - 약속 관련 Data 저장
                  * DB 생성 시, 초기 데이터가 존재하지 않으면 테이블 생성 X
                  * 'example' 초기 데이터로 생성 후, 추후 삭제 예정
                  */
                 personnelDBManager = personnelDBManager(this@joinActivity, str_ID, null, 1)
                 sqlitedb = personnelDBManager.writableDatabase
-                sqlitedb.execSQL("INSERT INTO $str_ID VALUES ('example', 'example', 'example', 'example')")
+                sqlitedb.execSQL("INSERT INTO $str_ID VALUES ('example', 'example', 'example', 'example', 'example')")
                 Toast.makeText(this@joinActivity, "가입되었습니다.", Toast.LENGTH_SHORT).show()
 
                 var intent = Intent(this, loginActivity::class.java)
@@ -143,17 +184,17 @@ class joinActivity : AppCompatActivity() {
                 userDbManager.close()
                 personnelDBManager.close()
             } else {
-                Toast.makeText(this@joinActivity, "아이디 중복 확인을 해 주세요.", Toast.LENGTH_SHORT).show()
+                dialog!!.start("중복 확인을 해 주세요.", 1, 3, this@joinActivity)
             }
         }
 
-        //돌아 가기 버튼 클릭 리스너 설정
+        // 돌아가기 버튼 클릭 리스너 설정
         backBtn.setOnClickListener{
             var intent = Intent(this, StartupActivity::class.java)
             startActivity(intent)
         }
 
-        //로그인 버튼 클릭 리스너 설정
+        // 로그인 버튼 클릭 리스너 설정
         loginBtn.setOnClickListener{
             var intent = Intent(this, loginActivity::class.java)
             startActivity(intent)
