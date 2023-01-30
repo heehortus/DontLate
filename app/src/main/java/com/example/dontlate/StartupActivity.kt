@@ -1,9 +1,11 @@
 package com.example.dontlate
 
 import android.content.Intent
+import android.database.sqlite.SQLiteDatabase
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
 import androidx.core.splashscreen.SplashScreen
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 
@@ -13,6 +15,7 @@ class StartupActivity : AppCompatActivity() {
     lateinit var joinBtn: Button
     private lateinit var splashScreen: SplashScreen
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // setContentView하기 전에 installSplashScreen() 필수
@@ -21,6 +24,7 @@ class StartupActivity : AppCompatActivity() {
 
         loginBtn = findViewById(R.id.loginBtn)
         joinBtn = findViewById(R.id.joinBtn)
+
 
         loginBtn.setOnClickListener{
             var intent = Intent(this, loginActivity::class.java)

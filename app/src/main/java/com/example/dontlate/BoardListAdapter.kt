@@ -20,5 +20,4 @@ class BoardListAdapter(private val itemList : List<board>) : RecyclerView.Adapte
             bind(item)
         }
     }
-
 }

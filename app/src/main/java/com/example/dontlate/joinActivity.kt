@@ -7,7 +7,9 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.graphics.Color
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.text.InputFilter
 import android.text.InputFilter.LengthFilter
 import android.widget.Button
@@ -138,13 +140,16 @@ class joinActivity : AppCompatActivity() {
             var str_name : String = nameInput.text.toString()
             var str_ID : String = idInput.text.toString()
             var str_password : String = passwordInput.text.toString()
-            var str_profile : String = Uri.Builder() // 기본 프로필의 Uri를 Database에 등록 - 초깃값
+            val uri : Uri = Uri.Builder()
                 .scheme(ContentResolver.SCHEME_ANDROID_RESOURCE)
                 .authority(resources.getResourcePackageName(R.drawable.profile))
                 .appendPath(resources.getResourceTypeName(R.drawable.profile))
                 .appendPath(resources.getResourceEntryName(R.drawable.profile))
                 .build()
-                .toString()
+
+            sqlitedb = userDbManager.writableDatabase
+            sqlitedb.execSQL("UPDATE user_info SET profile = '${uri}' WHERE ID = '${str_ID}'")
+            sqlitedb.close()
 
             if(str_ID.isEmpty()) { // 아이디 입력창이 비어있을 경우 회원가입 불가
                 dialog!!.start("아이디를 입력하세요.", 1, 3, this@joinActivity)
@@ -164,7 +169,7 @@ class joinActivity : AppCompatActivity() {
             sqlitedb = userDbManager.writableDatabase
             if(checkBtn.text == "확인 완료" && use == 1) {
                 sqlitedb.execSQL("INSERT INTO user_info VALUES ('" + str_name + "', '"
-                        + str_ID + "', '" + str_password + "', '" + str_profile + "');")
+                        + str_ID + "', '" + str_password + "', '" + uri + "');")
                 sqlitedb.close()
 
                 /**
@@ -199,5 +204,25 @@ class joinActivity : AppCompatActivity() {
             var intent = Intent(this, loginActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    /**
+     * @param uri: data에서 content 형태로 받은 Uri
+     *  다른 Activity 혹은 Fragment에서 활용하기 위해 Real Path를 담은 Uri 생성 함수
+     */
+    fun getRealPathFromURI (uri : Uri) : String {
+        val buildName = Build.MANUFACTURER
+        if(buildName.equals("Xiaomi")) {
+            return uri.path!!
+        }
+        var columnIndex = 0
+        val proj = arrayOf(MediaStore.Images.Media.DATA)
+        val cursor = contentResolver.query(uri, proj, null, null, null)
+        if(cursor!!.moveToFirst()) {
+            columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+        }
+        val result = cursor.getString(columnIndex)
+        cursor.close()
+        return result
     }
 }

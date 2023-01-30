@@ -29,6 +29,7 @@ import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 
+
 @Suppress("DEPRECATION")
 open class EditAccountActivity : AppCompatActivity() {
 
@@ -102,12 +103,11 @@ open class EditAccountActivity : AppCompatActivity() {
         sqlitedb.close()
 
         //회원 정보 반영
-        var imageFile = File(imageUri)
         editName.setText(str_name)
         editId.setText(str_id)
         editPw.setText(str_password)
         Glide.with(this)
-            .load(imageFile)
+            .load(imageUri)
             .apply(RequestOptions.centerCropTransform().circleCrop())
             .transition(DrawableTransitionOptions.withCrossFade())
             .into(img_user)
@@ -164,7 +164,25 @@ open class EditAccountActivity : AppCompatActivity() {
                         //갤러리에 관한 권한을 받아오는 코드
                         getAlbum()
                     }
-                    R.id.three -> img_user.setImageResource(R.drawable.profile)
+                    R.id.three -> {
+                        val user_id = user_intent.getStringExtra("user_id").toString()
+                        val uri : Uri = Uri.Builder()
+                            .scheme(ContentResolver.SCHEME_ANDROID_RESOURCE)
+                            .authority(resources.getResourcePackageName(R.drawable.profile))
+                            .appendPath(resources.getResourceTypeName(R.drawable.profile))
+                            .appendPath(resources.getResourceEntryName(R.drawable.profile))
+                            .build()
+
+                        Glide.with(this)
+                            .load(uri)
+                            .apply(RequestOptions.centerCropTransform().circleCrop())
+                            .transition(DrawableTransitionOptions.withCrossFade())
+                            .into(img_user)
+
+                        sqlitedb = userDbManager.writableDatabase
+                        sqlitedb.execSQL("UPDATE user_info SET profile = '${uri}' WHERE ID = '${user_id}'")
+                        sqlitedb.close()
+                    }
                 }
                 true
             }
