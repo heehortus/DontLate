@@ -154,54 +154,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView2">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_board"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                />
 
-            <Button
-                android:id="@+id/s13_listView1"
-                android:layout_width="380dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:background="@drawable/social_whitebutton_border"
-                tools:ignore="SpeakableTextPresentCheck" />
-
-            <Button
-                android:id="@+id/s13_listView2"
-                android:layout_width="380dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/social_whitebutton_border"
-                tools:ignore="SpeakableTextPresentCheck"/>
-
-            <Button
-                android:layout_width="380dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/social_whitebutton_border"
-                tools:ignore="SpeakableTextPresentCheck" />
-
-
-            <Button
-                android:layout_width="380dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/social_whitebutton_border"
-                tools:ignore="SpeakableTextPresentCheck" />
-
-            <Button
-                android:layout_width="380dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/social_whitebutton_border"
-                tools:ignore="SpeakableTextPresentCheck" />
-        </LinearLayout>
     </ScrollView>
 
     <FrameLayout
