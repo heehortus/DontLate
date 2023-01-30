@@ -110,7 +110,9 @@
         <activity
             android:name=".social37"
             android:exported="false" />
-
+        <activity
+            android:name=".social41"
+            android:exported="false" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyA8BTcUkeXuBUqmFoxeq4JPDXErTtFvef4" />

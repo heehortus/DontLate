@@ -69,7 +69,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="80dp"
         android:layout_marginEnd="8dp"
-        android:text="0명"
+        android:text="2명"
         android:gravity="center"
         android:textColor="@color/dark_gray"
         android:textSize="18sp"

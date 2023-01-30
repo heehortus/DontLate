@@ -41,8 +41,6 @@
                 android:textColor="@color/black"
                 android:textSize="25sp"
                 android:textStyle="bold" />
-
-
         </LinearLayout>
 
         <FrameLayout
@@ -53,11 +51,7 @@
                 android:id="@+id/map"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
-
-
         </FrameLayout>
-
-
     </LinearLayout>
 
     <LinearLayout
@@ -121,13 +115,7 @@
                 android:textStyle="bold"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
         </LinearLayout>
-
-
-
     </LinearLayout>
-
-
-
 
     <Button
         android:id="@+id/s36_next_btn"
@@ -144,7 +132,4 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
