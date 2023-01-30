@@ -4,6 +4,7 @@ package com.example.dontlate
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationListener
@@ -11,6 +12,7 @@ import android.location.LocationManager
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -37,16 +39,14 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, CoroutineScope {
 
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main + job
-
     private lateinit var binding: ActivityMapBinding
     private lateinit var map: GoogleMap
     private var currentSelectMarker: Marker? = null
-
     private lateinit var searchResult: SearchResultEntity
-
     private lateinit var locationManager: LocationManager // 안드로이드 에서 위치정보 불러올 때 관리해주는 유틸 클래스
-
     private lateinit var myLocationListener: MyLocationListener // 나의 위치를 불러올 리스너
+
+    lateinit var mapConfirmBtn : Button
 
     companion object {
         const val SEARCH_RESULT_EXTRA_KEY: String = "SEARCH_RESULT_EXTRA_KEY"
@@ -68,6 +68,22 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, CoroutineScope {
                     ?: throw Exception("데이터가 존재하지 않습니다.")
                 setupGoogleMap()
             }
+        }
+
+        mapConfirmBtn = findViewById(R.id.mapConfirmBtn)
+        var intent = intent
+        var place = intent.getStringExtra("place_name")
+        var name = intent.getStringExtra("name")
+        var person_num = intent.getStringExtra("person_num")
+        var deadline = intent.getStringExtra("deadline")
+
+        mapConfirmBtn.setOnClickListener {
+            var intent = Intent(this@MapActivity, social17::class.java)
+            intent.putExtra("place_name", place)
+            intent.putExtra("name", name)
+            intent.putExtra("person_num", person_num)
+            intent.putExtra("deadline", deadline)
+            startActivity(intent)
         }
     }
 
