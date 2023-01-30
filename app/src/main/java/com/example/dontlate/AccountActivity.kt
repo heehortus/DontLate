@@ -90,13 +90,12 @@ class AccountActivity : AppCompatActivity() {
             1. 회원이 설정한 프로필 이미지 Uri를 Database에서 불러와 File 형태로 변환 및 적용
             2. 데이터베이스에서 회원 정보를 불러와 각각의 EditText에 반영
          */
-        var imageFile = File(imageUri)
         accountName.setText(str_name)
         accountId.setText(str_id)
         accountPw.setText(str_password)
 
         Glide.with(this)
-            .load(imageFile)
+            .load(imageUri)
             .apply(RequestOptions.centerCropTransform().circleCrop())
             .transition(DrawableTransitionOptions.withCrossFade())
             .into(img_user)

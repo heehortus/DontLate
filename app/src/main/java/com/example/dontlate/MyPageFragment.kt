@@ -1,20 +1,17 @@
 package com.example.dontlate
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.example.dontlate.databinding.FragmentMyPageBinding
 import kotlinx.android.synthetic.main.activity_my_page.*
 import java.io.File
-import java.io.InputStream
+
 
 class MyPageFragment : Fragment() {
 
@@ -50,11 +47,10 @@ class MyPageFragment : Fragment() {
         user_image = bundle?.getString("user_image").toString()
         font = bundle?.getFloat("fontSize")!!.toFloat()
 
-        var imageFile = File(user_image)
         name.text = "$user_name 님"
 
         GlideApp.with(this@MyPageFragment)
-            .load(imageFile)
+            .load(user_image)
             .apply(RequestOptions.centerCropTransform().circleCrop())
             .transition(DrawableTransitionOptions.withCrossFade())
             .into(img_user)
