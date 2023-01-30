@@ -3,10 +3,17 @@ package com.example.dontlate
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.ContentValues
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.ImageDecoder
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
+import android.media.VolumeShaper.Configuration
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -19,12 +26,21 @@ import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.ActivityResult
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.text.parseAsHtml
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
+import com.google.android.material.internal.ContextUtils.getActivity
 import com.google.android.material.textfield.TextInputEditText
+import kotlinx.android.synthetic.main.fragment_home.*
+import java.io.ByteArrayOutputStream
+import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -41,6 +57,7 @@ open class EditAccountActivity : AppCompatActivity() {
     lateinit var str_name : String
     lateinit var str_id : String
     lateinit var str_password : String
+    lateinit var user_intent : Intent
 
     //정보 수정 시 팝업 제공
     var dialog : CustomDialog? = null
@@ -48,6 +65,7 @@ open class EditAccountActivity : AppCompatActivity() {
     //프로필 사진
     lateinit var img_user: ImageView
     lateinit var selectBtn: ImageButton
+    lateinit var imageUri: String
 
     //폰트 사이즈 변경
     lateinit var nameText : TextView
@@ -74,10 +92,14 @@ open class EditAccountActivity : AppCompatActivity() {
         idText = findViewById(R.id.idText)
         editId = findViewById(R.id.editId)
 
+        //프로필 사진 변경 코드
+        img_user = findViewById(R.id.img_user5)
+        img_user.setImageResource(R.drawable.profile)
+        var editUse : Boolean = false
 
         // 로그인 정보 받아오기
-        val intent = intent
-        val user_id = intent.getStringExtra("user_id").toString()
+        user_intent = intent
+        val user_id = user_intent.getStringExtra("user_id").toString()
 
         // 데이터베이스 연결
         userDbManager = userDBManager(this@EditAccountActivity, "user_info", null, 1)
@@ -90,17 +112,25 @@ open class EditAccountActivity : AppCompatActivity() {
             str_id = cursor.getString(cursor.getColumnIndex("ID")).toString()
             str_password = cursor.getString(cursor.getColumnIndex("password")).toString()
             str_name = cursor.getString(cursor.getColumnIndex("name")).toString()
+            imageUri = cursor.getString(cursor.getColumnIndex("profile")).toString()
         }
         sqlitedb.close()
 
         //회원 정보 반영
+        var imageFile = File(imageUri)
         editName.setText(str_name)
         editId.setText(str_id)
         editPw.setText(str_password)
+        Glide.with(this)
+            .load(imageFile)
+            .apply(RequestOptions.centerCropTransform().circleCrop())
+            .transition(DrawableTransitionOptions.withCrossFade())
+            .into(img_user)
 
 
         backBtn.setOnClickListener {
             var intent = Intent(this, AccountActivity::class.java)
+            intent.putExtra("user_id", str_id)
             startActivity(intent)
             finish()
         }
@@ -113,37 +143,30 @@ open class EditAccountActivity : AppCompatActivity() {
             var edt_name : String = editName.text.toString()
             var edt_password : String = editPw.text.toString()
 
-            if(edt_name == str_name && edt_password == str_password) {
+            if(edt_name == str_name && edt_password == str_password && !editUse) {
                 Toast.makeText(this@EditAccountActivity, "변경사항이 없습니다.", Toast.LENGTH_SHORT).show()
 
-                /*
-                var intent = Intent(this, AccountActivity::class.java)
-                startActivity(intent)
-                 */
-
             } else {
+
                 sqlitedb = userDbManager.writableDatabase
                 sqlitedb.execSQL("UPDATE user_info SET name = '$edt_name', password = '$edt_password' WHERE ID = '$user_id'")
                 sqlitedb.close()
                 Toast.makeText(this@EditAccountActivity, "변경되었습니다.", Toast.LENGTH_SHORT).show()
 
-
                 var intent = Intent(this, AccountActivity::class.java)
+                intent.putExtra("user_id", str_id)
                 startActivity(intent)
+                finish()
+
             }
         }
-
-
-
-        //프로필 사진 변경 코드
-        img_user = findViewById(R.id.img_user5)
-        img_user.setImageResource(R.drawable.profile)
 
         selectBtn = findViewById(R.id.selectBtn)
 
         selectBtn.setOnClickListener {
             var pop = PopupMenu(this, img_user)
             menuInflater.inflate(R.menu.profile_menu, pop.menu)
+            editUse = true
 
             pop.setOnMenuItemClickListener { item ->
                 when (item.itemId) {
@@ -310,6 +333,7 @@ open class EditAccountActivity : AppCompatActivity() {
 
     /** 카메라 및 앨범 Intent 결과
      * */
+    @SuppressLint("RestrictedApi")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -322,6 +346,18 @@ open class EditAccountActivity : AppCompatActivity() {
                             .apply(RequestOptions.centerCropTransform().circleCrop())
                             .transition(DrawableTransitionOptions.withCrossFade())
                             .into(img_user)
+
+                        /*
+                         * Database에 imageUri를 저장할 때에는 data에서 content 형태로 받은 Uri가 아닌,
+                         * 해당 uri를 기기 내 Real Path로 다시 한 번 변환하여 저장한다.
+                         *
+                         *  - 다른 Activity 혹은 Fragment에서 이미지를 받아 띄우고 싶은 경우,
+                         *    Real Path Uri를 File 형태로 바꾸어 사용한다.
+                         */
+                        val imageUri = getRealPathFromURI(uri)
+                        sqlitedb = userDbManager.writableDatabase
+                        sqlitedb.execSQL("UPDATE user_info SET profile = '${imageUri}' WHERE ID = '${str_id}'")
+                        sqlitedb.close()
                     }
                 }
 
@@ -332,9 +368,41 @@ open class EditAccountActivity : AppCompatActivity() {
                             .apply(RequestOptions.centerCropTransform().circleCrop())
                             .transition(DrawableTransitionOptions.withCrossFade())
                             .into(img_user)
+
+                        /*
+                         * Database에 imageUri를 저장할 때에는 data에서 content 형태로 받은 Uri가 아닌,
+                         * 해당 uri를 기기 내 Real Path로 다시 한 번 변환하여 저장한다.
+                         *
+                         *  - 다른 Activity 혹은 Fragment에서 이미지를 받아 띄우고 싶은 경우,
+                         *    Real Path Uri를 File 형태로 바꾸어 사용한다.
+                         */
+                        val imageUri = getRealPathFromURI(uri)
+                        sqlitedb = userDbManager.writableDatabase
+                        sqlitedb.execSQL("UPDATE user_info SET profile = '${imageUri}' WHERE ID = '${str_id}'")
+                        sqlitedb.close()
                     }
                 }
             }
         }
+    }
+
+    /**
+     * @param uri: data에서 content 형태로 받은 Uri
+     *  다른 Activity 혹은 Fragment에서 활용하기 위해 Real Path를 담은 Uri 생성 함수
+     */
+    fun getRealPathFromURI (uri : Uri) : String {
+        val buildName = Build.MANUFACTURER
+        if(buildName.equals("Xiaomi")) {
+            return uri.path!!
+        }
+        var columnIndex = 0
+        val proj = arrayOf(MediaStore.Images.Media.DATA)
+        val cursor = contentResolver.query(uri, proj, null, null, null)
+        if(cursor!!.moveToFirst()) {
+            columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+        }
+        val result = cursor.getString(columnIndex)
+        cursor.close()
+        return result
     }
 }

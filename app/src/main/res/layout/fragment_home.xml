@@ -7,7 +7,7 @@
     tools:context=".HomeFragment">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/img_user3"
         android:layout_width="134dp"
         android:layout_height="135dp"
         android:scaleType="fitCenter"
@@ -39,7 +39,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/img_user3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="아직 약속이 없어요. 약속을 생성해보세요!"

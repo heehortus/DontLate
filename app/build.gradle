@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
@@ -11,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.dontlate"
-        minSdk 23
+        minSdk 28
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -67,6 +68,7 @@ dependencies {
     //이미지 불러오기
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    kapt "com.github.bumptech.glide:compiler:4.11.0"
 
     //Google Maps API (하단이 추가된 부분)
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
