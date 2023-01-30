@@ -10,9 +10,19 @@ import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.fragment.app.Fragment
 import com.example.dontlate.databinding.FragmentSocialBinding
+import kotlinx.android.synthetic.main.fragment_social.*
 
 
 class SocialFragment : Fragment() {
+
+    //데이터 예제
+    private val board : List<board> = listOf(
+        board("약속 예시 1번입니다.", "노원구 광장", "1.31 (화)", "4", "6" ),
+        board("약속 예시 2번입니다.", "노원구 광장", "1.31 (화)", "4", "6" ),
+        board("약속 예시 3번입니다.", "노원구 광장", "1.31 (화)", "4", "6" ),
+        board("약속 예시 4번입니다.", "노원구 광장", "1.31 (화)", "4", "6" ),
+        board("약속 예시 5번입니다.", "노원구 광장", "1.31 (화)", "4", "6" )
+    )
 
     lateinit var binding : FragmentSocialBinding
 
@@ -21,6 +31,8 @@ class SocialFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSocialBinding.inflate(inflater, container, false)
+        val adapter = BoardListAdapter(board)
+        binding.recyclerBoard.adapter = adapter
         return binding.root
     }
 
@@ -39,16 +51,6 @@ class SocialFragment : Fragment() {
 
             binding.s13NotiBtn.setOnClickListener {
 
-            }
-
-            binding.s13ListView1.setOnClickListener {
-                val intent = Intent(getActivity(), social31::class.java)
-                startActivity(intent)
-            }
-
-            binding.s13ListView2.setOnClickListener {
-                val intent = Intent(getActivity(), social35::class.java)
-                startActivity(intent)
             }
 
             binding.keyword1.setOnClickListener {
