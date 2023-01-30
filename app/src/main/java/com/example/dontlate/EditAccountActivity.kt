@@ -1,48 +1,30 @@
 package com.example.dontlate
 
 import android.annotation.SuppressLint
-import android.app.Activity
+import android.content.ContentResolver
 import android.content.ContentValues
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.ImageDecoder
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
-import android.media.VolumeShaper.Configuration
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.PopupMenu
-import android.widget.TextView
-import android.widget.Toast
-import androidx.activity.result.ActivityResult
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.core.text.parseAsHtml
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
-import com.google.android.material.internal.ContextUtils.getActivity
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.fragment_home.*
-import java.io.ByteArrayOutputStream
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 @Suppress("DEPRECATION")
 open class EditAccountActivity : AppCompatActivity() {
@@ -117,12 +99,11 @@ open class EditAccountActivity : AppCompatActivity() {
         sqlitedb.close()
 
         //회원 정보 반영
-        var imageFile = File(imageUri)
         editName.setText(str_name)
         editId.setText(str_id)
         editPw.setText(str_password)
         Glide.with(this)
-            .load(imageFile)
+            .load(imageUri)
             .apply(RequestOptions.centerCropTransform().circleCrop())
             .transition(DrawableTransitionOptions.withCrossFade())
             .into(img_user)
@@ -179,7 +160,25 @@ open class EditAccountActivity : AppCompatActivity() {
                         //갤러리에 관한 권한을 받아오는 코드
                         getAlbum()
                     }
-                    R.id.three -> img_user.setImageResource(R.drawable.profile)
+                    R.id.three -> {
+                        val user_id = user_intent.getStringExtra("user_id").toString()
+                        val uri : Uri = Uri.Builder()
+                            .scheme(ContentResolver.SCHEME_ANDROID_RESOURCE)
+                            .authority(resources.getResourcePackageName(R.drawable.profile))
+                            .appendPath(resources.getResourceTypeName(R.drawable.profile))
+                            .appendPath(resources.getResourceEntryName(R.drawable.profile))
+                            .build()
+
+                        Glide.with(this)
+                            .load(uri)
+                            .apply(RequestOptions.centerCropTransform().circleCrop())
+                            .transition(DrawableTransitionOptions.withCrossFade())
+                            .into(img_user)
+
+                        sqlitedb = userDbManager.writableDatabase
+                        sqlitedb.execSQL("UPDATE user_info SET profile = '${uri}' WHERE ID = '${user_id}'")
+                        sqlitedb.close()
+                    }
                 }
                 true
             }
