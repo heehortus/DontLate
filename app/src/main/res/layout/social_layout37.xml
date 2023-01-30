@@ -112,14 +112,14 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <TextView
                         android:layout_width="34dp"
                         android:layout_height="34dp"
                         android:gravity="center"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border"
+                        android:background="@drawable/social_timetable_unclick"
                         android:text="@string/monday"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
@@ -129,7 +129,7 @@
                         android:layout_height="34dp"
                         android:gravity="center"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border"
+                        android:background="@drawable/social_timetable_unclick"
                         android:text="@string/tuesday"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
@@ -139,7 +139,7 @@
                         android:layout_height="34dp"
                         android:gravity="center"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border"
+                        android:background="@drawable/social_timetable_unclick"
                         android:text="@string/wednesday"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
@@ -149,7 +149,7 @@
                         android:layout_height="34dp"
                         android:gravity="center"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border"
+                        android:background="@drawable/social_timetable_unclick"
                         android:text="@string/thursday"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
@@ -159,7 +159,7 @@
                         android:layout_height="34dp"
                         android:gravity="center"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border"
+                        android:background="@drawable/social_timetable_unclick"
                         android:text="@string/friday"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
@@ -169,7 +169,7 @@
                         android:layout_height="34dp"
                         android:gravity="center"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border"
+                        android:background="@drawable/social_timetable_unclick"
                         android:text="@string/saturday"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
@@ -179,7 +179,7 @@
                         android:layout_height="34dp"
                         android:gravity="center"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_under_border"
+                        android:background="@drawable/social_timetable_unclick_sun"
                         android:text="@string/sunday"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
@@ -193,7 +193,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:background="@drawable/social_timetable_border"
+                        android:background="@drawable/social_timetable_unclick"
                         android:paddingVertical="10dp"
                         android:paddingEnd="15dp"
                         android:text="10 : 00 AM"
@@ -204,55 +204,55 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_under_border" />
+                        android:background="@drawable/social_timetable_unclick_sun" />
                 </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/social_timetable_under_border">
+                    android:background="@drawable/social_timetable_unclick_sun">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:background="@drawable/social_timetable_border"
+                        android:background="@drawable/social_timetable_unclick"
                         android:paddingVertical="10dp"
                         android:paddingEnd="15dp"
                         android:text="11 : 00 AM"
@@ -263,56 +263,56 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_under_border" />
+                        android:background="@drawable/social_timetable_unclick_sun" />
 
                 </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/social_timetable_under_border">
+                    android:background="@drawable/social_timetable_unclick_sun">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:background="@drawable/social_timetable_border"
+                        android:background="@drawable/social_timetable_unclick"
                         android:paddingVertical="10dp"
                         android:paddingEnd="15dp"
                         android:text="12 : 00 PM"
@@ -323,56 +323,56 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_under_border" />
+                        android:background="@drawable/social_timetable_unclick_sun" />
 
                 </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/social_timetable_under_border">
+                    android:background="@drawable/social_timetable_unclick_sun">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:background="@drawable/social_timetable_border"
+                        android:background="@drawable/social_timetable_unclick"
                         android:paddingVertical="10dp"
                         android:paddingStart="5dp"
                         android:paddingEnd="15dp"
@@ -384,55 +384,55 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_under_border" />
+                        android:background="@drawable/social_timetable_unclick_sun" />
                 </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/social_timetable_under_border">
+                    android:background="@drawable/social_timetable_unclick_sun">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:background="@drawable/social_timetable_border"
+                        android:background="@drawable/social_timetable_unclick"
                         android:paddingVertical="10dp"
                         android:paddingStart="5dp"
                         android:paddingEnd="15dp"
@@ -444,54 +444,54 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_under_border" />
+                        android:background="@drawable/social_timetable_unclick_sun" />
                 </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/social_timetable_under_border">
+                    android:background="@drawable/social_timetable_unclick_sun">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/social_timetable_border"
+                        android:background="@drawable/social_timetable_unclick"
                         android:gravity="center"
                         android:paddingVertical="10dp"
                         android:paddingStart="5dp"
@@ -504,55 +504,55 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_under_border" />
+                        android:background="@drawable/social_timetable_unclick_sun" />
                 </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/social_timetable_under_border">
+                    android:background="@drawable/social_timetable_unclick_sun">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:background="@drawable/social_timetable_border"
+                        android:background="@drawable/social_timetable_unclick"
                         android:paddingVertical="10dp"
                         android:paddingStart="5dp"
                         android:paddingEnd="15dp"
@@ -564,55 +564,55 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_under_border" />
+                        android:background="@drawable/social_timetable_unclick_sun" />
                 </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/social_timetable_under_border">
+                    android:background="@drawable/social_timetable_unclick_sun">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:background="@drawable/social_timetable_border"
+                        android:background="@drawable/social_timetable_unclick"
                         android:paddingVertical="10dp"
                         android:paddingStart="5dp"
                         android:paddingEnd="15dp"
@@ -624,55 +624,55 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_under_border" />
+                        android:background="@drawable/social_timetable_unclick_sun" />
                 </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/social_timetable_under_border">
+                    android:background="@drawable/social_timetable_unclick_sun">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:background="@drawable/social_timetable_border"
+                        android:background="@drawable/social_timetable_unclick"
                         android:paddingVertical="10dp"
                         android:paddingStart="5dp"
                         android:paddingEnd="15dp"
@@ -684,55 +684,55 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_under_border" />
+                        android:background="@drawable/social_timetable_unclick_sun" />
                 </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/social_timetable_under_border">
+                    android:background="@drawable/social_timetable_unclick_sun">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:background="@drawable/social_timetable_border"
+                        android:background="@drawable/social_timetable_unclick"
                         android:paddingVertical="10dp"
                         android:paddingStart="5dp"
                         android:paddingEnd="15dp"
@@ -744,55 +744,55 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_under_border" />
+                        android:background="@drawable/social_timetable_unclick_sun" />
                 </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/social_timetable_under_border">
+                    android:background="@drawable/social_timetable_unclick_sun">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:background="@drawable/social_timetable_border"
+                        android:background="@drawable/social_timetable_unclick"
                         android:paddingVertical="10dp"
                         android:paddingStart="5dp"
                         android:paddingEnd="15dp"
@@ -804,55 +804,55 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_under_border" />
+                        android:background="@drawable/social_timetable_unclick_sun" />
                 </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/social_timetable_under_border">
+                    android:background="@drawable/social_timetable_unclick_sun">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:background="@drawable/social_timetable_border"
+                        android:background="@drawable/social_timetable_unclick"
                         android:paddingVertical="10dp"
                         android:paddingStart="5dp"
                         android:paddingEnd="15dp"
@@ -864,43 +864,43 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_under_border" />
+                        android:background="@drawable/social_timetable_unclick_sun" />
                 </TableRow>
 
                 <TableRow
@@ -911,7 +911,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:background="@drawable/social_timetable_border"
+                        android:background="@drawable/social_timetable_unclick"
                         android:paddingVertical="10dp"
                         android:paddingEnd="15dp"
                         android:text="10 : 00 PM"
@@ -922,43 +922,43 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_border" />
+                        android:background="@drawable/social_timetable_unclick" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/social_timetable_under_border" />
+                        android:background="@drawable/social_timetable_unclick_sun" />
                 </TableRow>
 
             </TableLayout>

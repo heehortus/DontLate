@@ -28,7 +28,7 @@ class social37 : AppCompatActivity() {
         nextBtn.setOnClickListener(NextClickListener())
     }
 
-    
+
     internal inner class NextClickListener : View.OnClickListener {
         override fun onClick(v: View) {
             // nextBtn Click 이벤트 처리 구간

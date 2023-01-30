@@ -16,7 +16,6 @@ class social31 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
         setContentView(R.layout.social_layout31)
         nextBtn = findViewById(R.id.s31_next_btn)
         backBtn = findViewById(R.id.s31_back_btn)
