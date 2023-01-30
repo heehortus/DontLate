@@ -147,16 +147,18 @@ class SearchActivity : AppCompatActivity(), CoroutineScope {
             )
         }
         adapter.setSearchResultList(dataList) {
-            Toast.makeText(
-                this,
-                "빌딩이름 : ${it.name}, 주소 : ${it.fullAddress} 위도/경도 : ${it.locationLatLng}",
-                Toast.LENGTH_SHORT
-            )
-                .show()
-
             // map 액티비티 시작
+            var intent = intent
+            var name = intent.getStringExtra("name")
+            var person_num = intent.getStringExtra("person_num")
+            var deadline = intent.getStringExtra("deadline")
+
             startActivity(Intent(this, MapActivity::class.java).apply {
                 putExtra(SEARCH_RESULT_EXTRA_KEY, it)
+                putExtra("place_name", it.name)
+                putExtra("name", name)
+                putExtra("person_num", person_num)
+                putExtra("deadline", deadline)
             })
         }
         adapter.currentPage = searchInfo.page.toInt()
