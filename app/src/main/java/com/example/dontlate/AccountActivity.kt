@@ -4,14 +4,11 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
@@ -32,8 +29,8 @@ class AccountActivity : AppCompatActivity() {
     lateinit var str_password : String
 
     //프로필 사진
-    lateinit var img_user: ImageView
-    lateinit var imageUri: String
+    lateinit var img_user : ImageView
+    lateinit var imageUri : String
 
     //폰트 크기 변형
     lateinit var nameText: TextView
@@ -68,7 +65,7 @@ class AccountActivity : AppCompatActivity() {
         accountId = findViewById(R.id.accountId)
         accountPw = findViewById(R.id.accountPw)
 
-        // 로그인한 회원 정보 받아오기
+        // 로그인 정보 받아오기
         val intent = intent
         val user_id = intent.getStringExtra("user_id").toString()
 
@@ -76,10 +73,12 @@ class AccountActivity : AppCompatActivity() {
         userDbManager = userDBManager(this@AccountActivity, "user_info", null, 1)
         var cursor : Cursor
 
+        //일치하는 아이디의 데이터베이스 값 받아오기
         sqlitedb = userDbManager.readableDatabase
         cursor = sqlitedb.rawQuery("SELECT * FROM user_info WHERE ID = '$user_id';", null)
 
         while (cursor.moveToNext()) {
+            //회원 정보 반영
             str_id = cursor.getString(cursor.getColumnIndex("ID")).toString()
             str_password = cursor.getString(cursor.getColumnIndex("password")).toString()
             str_name = cursor.getString(cursor.getColumnIndex("name")).toString()
@@ -102,11 +101,11 @@ class AccountActivity : AppCompatActivity() {
             .transition(DrawableTransitionOptions.withCrossFade())
             .into(img_user)
 
-        // 회원 탈퇴 : 팝업 설정
+        //회원 탈퇴 : 팝업 설정
         dialog = CustomDialog(this)
         quitBtn = findViewById(R.id.quitBtn)
 
-        // 회원 탈퇴
+        //회원 탈퇴
         quitBtn.setOnClickListener{
             dialog!!.start("정말 탈퇴하시겠어요?", 1, 2, this@AccountActivity)
         }
@@ -120,6 +119,7 @@ class AccountActivity : AppCompatActivity() {
             intent.putExtra("selectedItem", "mypage")
             startActivity(intent)
         }
+
 
         //수정하기 버튼 클릭 리스너
         editBtn.setOnClickListener{
@@ -141,4 +141,5 @@ class AccountActivity : AppCompatActivity() {
         editBtn.textSize = font
         quitBtn.textSize = font
     }
+
 }
