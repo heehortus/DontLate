@@ -78,7 +78,7 @@ class joinActivity : AppCompatActivity() {
             }
             dialog!!.start("특수문자는 입력할 수 없습니다.", 1, 3, this@joinActivity)
             ""
-        }, LengthFilter(9)))
+        }, LengthFilter(10)))
 
         nameInput.setFilters(arrayOf(InputFilter { source, start, end, dest, dstart, dend ->
             val ps: Pattern =
@@ -88,7 +88,7 @@ class joinActivity : AppCompatActivity() {
             }
             dialog!!.start("특수문자는 입력할 수 없습니다.", 1, 3, this@joinActivity)
             ""
-        }, LengthFilter(9)))
+        }, LengthFilter(10)))
 
 
         // 데이터베이스 연결
@@ -179,7 +179,8 @@ class joinActivity : AppCompatActivity() {
                  */
                 personnelDBManager = personnelDBManager(this@joinActivity, str_ID, null, 1)
                 sqlitedb = personnelDBManager.writableDatabase
-                sqlitedb.execSQL("INSERT INTO $str_ID VALUES ('example', 'example', 'example', 'example', 'example')")
+                sqlitedb.execSQL("INSERT INTO $str_ID VALUES ('example', 'example', 'example', 'example', 'example', " +
+                        "'example', 'example')")
                 Toast.makeText(this@joinActivity, "가입되었습니다.", Toast.LENGTH_SHORT).show()
 
                 var intent = Intent(this, loginActivity::class.java)

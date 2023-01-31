@@ -47,6 +47,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, CoroutineScope {
     private lateinit var myLocationListener: MyLocationListener // 나의 위치를 불러올 리스너
 
     lateinit var mapConfirmBtn : Button
+    lateinit var mapBackBtn : Button
 
     companion object {
         const val SEARCH_RESULT_EXTRA_KEY: String = "SEARCH_RESULT_EXTRA_KEY"
@@ -84,6 +85,17 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, CoroutineScope {
 
             intent.putExtra("headID", headID)
             intent.putExtra("place_name", place)
+            intent.putExtra("name", name)
+            intent.putExtra("total_num", total_num)
+            intent.putExtra("deadline", deadline)
+            intent.putExtra("usePlaceBtn", usePlaceBtn)
+            startActivity(intent)
+        }
+
+        mapBackBtn.setOnClickListener {
+            var intent = Intent(this@MapActivity, SearchActivity::class.java)
+
+            intent.putExtra("headID", headID)
             intent.putExtra("name", name)
             intent.putExtra("total_num", total_num)
             intent.putExtra("deadline", deadline)

@@ -15,7 +15,6 @@ class StartupActivity : AppCompatActivity() {
     lateinit var joinBtn: Button
     private lateinit var splashScreen: SplashScreen
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // setContentView하기 전에 installSplashScreen() 필수

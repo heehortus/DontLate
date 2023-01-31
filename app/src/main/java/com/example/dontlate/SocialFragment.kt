@@ -1,30 +1,25 @@
 package com.example.dontlate
 
-import android.R
+import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.Color
+import android.database.Cursor
+import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.dontlate.RecyclerTouchListener.ClickListener
 import com.example.dontlate.databinding.FragmentSocialBinding
 
 
 class SocialFragment : Fragment() {
 
-    //데이터 예제
-    private val board : List<board> = listOf(
-        board("약속 예시 1번입니다.", "노원구 광장", "1.31 (화)", "4", "6", "6" ),
-        board("약속 예시 1번입니다.", "노원구 광장", "1.31 (화)", "4", "6", "6" ),
-        board("약속 예시 1번입니다.", "노원구 광장", "1.31 (화)", "4", "6", "6" ),
-        board("약속 예시 1번입니다.", "노원구 광장", "1.31 (화)", "4", "6", "6" ),
-        board("약속 예시 1번입니다.", "노원구 광장", "1.31 (화)", "4", "6", "6" ),
-
-    )
-
     lateinit var binding : FragmentSocialBinding
+
+    // 데이터베이스 선언
+    lateinit var serverDBManager: serverDBManager
+    lateinit var sqlitedb: SQLiteDatabase
 
     // 회원 정보
     lateinit var user_id : String
@@ -35,16 +30,22 @@ class SocialFragment : Fragment() {
     var font : Float = 16F
 
 
+    lateinit var title : String
+    lateinit var headID : String
+    lateinit var date : String
+    lateinit var place : String
+    lateinit var total_num : String
+    lateinit var current_num : String
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         binding = FragmentSocialBinding.inflate(inflater, container, false)
-        val adapter = BoardListAdapter(board)
-        binding.recyclerBoard.adapter = adapter
         return binding.root
     }
 
+    @SuppressLint("Range")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initButtonOnClick()
@@ -57,9 +58,49 @@ class SocialFragment : Fragment() {
         user_id = bundle?.getString("user_id").toString()
         user_name = bundle?.getString("user_name").toString()
         user_image = bundle?.getString("user_image").toString()
-        //font = bundle?.getFloat("fontSize")!!.toFloat()
+        font = bundle?.getFloat("fontSize")!!.toFloat()
 
-        Toast.makeText(getActivity(), user_id, Toast.LENGTH_SHORT).show()
+        // 데이터베이스 연결
+        serverDBManager = serverDBManager(requireActivity(), "server", null, 1)
+        var cursor : Cursor
+
+        sqlitedb = serverDBManager.readableDatabase
+        cursor = sqlitedb.rawQuery("SELECT * FROM server;", null)
+
+        val listBoard = ArrayList<board>()
+
+        while (cursor.moveToNext()) {
+            headID = cursor.getString(cursor.getColumnIndex("headID")).toString()
+            title = cursor.getString(cursor.getColumnIndex("title")).toString()
+            date = cursor.getString(cursor.getColumnIndex("date")).toString()
+            place = cursor.getString(cursor.getColumnIndex("place")).toString()
+            total_num = cursor.getString(cursor.getColumnIndex("total_num")).toString()
+            current_num = cursor.getString(cursor.getColumnIndex("current_num")).toString()
+
+            listBoard.add(
+                board("$title", "$place", "$date",
+                    "$current_num", "$total_num")
+            )
+        }
+
+        val adapter = BoardListAdapter(listBoard)
+        binding.recyclerBoard.adapter = adapter
+
+        binding.recyclerBoard.addOnItemTouchListener(
+            RecyclerTouchListener(
+                activity,
+                binding.recyclerBoard,
+                object : ClickListener {
+                    override fun onClick(view: View?, position: Int) {
+                        var intent = Intent(getActivity(), social35::class.java)
+                        intent.putExtra("title", title)
+                        startActivity(intent)
+                    }
+
+                    override fun onLongClick(view: View?, position: Int) {}
+                })
+        )
+
     }
 
     private fun initButtonOnClick() {
