@@ -41,7 +41,6 @@ class social14 : AppCompatActivity() {
         //회원 아이디 정보 받아오기
         var intent = intent
         var user_id = intent.getStringExtra("user_id").toString()
-        Toast.makeText(this@social14, user_id, Toast.LENGTH_SHORT).show()
 
         numText.text = "$count 명"
 

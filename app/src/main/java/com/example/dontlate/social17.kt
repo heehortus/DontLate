@@ -135,6 +135,8 @@ class social17 : AppCompatActivity() {
 
         nextBtn.setOnClickListener {
             val intent = Intent(this, social25::class.java)
+            if(edtObject == "public") inviteCode = ""
+
             intent.putExtra("headID", headID)
             intent.putExtra("name", name)
             intent.putExtra("total_num", total_num)
@@ -163,7 +165,7 @@ class social17 : AppCompatActivity() {
         }
 
 
-        //초대코드 랜덤생성
+        //초대 코드 랜덤 생성
         val rnd = Random()
         val code1 = (rnd.nextInt(26) + 97).toChar().toString() //영어 소문자 a-z
         val code2 = (rnd.nextInt(26) + 65).toChar().toString() //영어 대문자 A-Z

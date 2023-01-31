@@ -17,8 +17,8 @@ class serverDBManager (context: Context,
                        version: Int
 ) : SQLiteOpenHelper(context, name, factory, version) {
     override fun onCreate(db: SQLiteDatabase?) {
-        db!!.execSQL("CREATE TABLE server (headID text, date text, title text, place text, deadline text, total_num text," +
-                "current_num, state text, object text, inviteCode text, subject text)")
+        db!!.execSQL("CREATE TABLE server (headID text, date text, title text, place text, deadline text, total_num Int," +
+                "current_num Int, state text, object text, inviteCode text, subject text)")
     }
 
     override fun onUpgrade(p0: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {

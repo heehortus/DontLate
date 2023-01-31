@@ -9,13 +9,11 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.ImageButton
-import android.widget.Toast
 import androidx.core.view.isVisible
 import com.example.dontlate.MapActivity.Companion.SEARCH_RESULT_EXTRA_KEY
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.dontlate.databinding.ActivityMainBinding
 import com.example.dontlate.databinding.ActivitySearchBinding
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
@@ -55,9 +53,23 @@ class SearchActivity : AppCompatActivity(), CoroutineScope {
         bindViews()
         initData()
 
-        backBtn = findViewById(R.id.s18_back_btn)
+        backBtn = findViewById(R.id.map_back_btn)
 
-        backBtn.setOnClickListener(BackClickListener())
+        backBtn.setOnClickListener {
+            // map 액티비티 시작
+            var intent = intent
+            var headID = intent.getStringExtra("headID")
+            var name = intent.getStringExtra("name")
+            var total_num = intent.getStringExtra("total_num")
+            var deadline = intent.getStringExtra("deadline")
+
+            startActivity(Intent(this, social17::class.java).apply {
+                putExtra("headID", headID)
+                putExtra("name", name)
+                putExtra("total_num", total_num)
+                putExtra("deadline", deadline)
+            })
+        }
     }
 
     internal inner class BackClickListener : View.OnClickListener {
