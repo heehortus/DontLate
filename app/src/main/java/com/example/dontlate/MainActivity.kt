@@ -46,25 +46,28 @@ class MainActivity : AppCompatActivity() {
      * */
     private fun initBottomNavigation() {
         binding.bottomNavi.run {
+            var bundle = Bundle()
+
+            bundle.putString("user_id", user_id)
+            bundle.putString("user_name", user_name)
+            bundle.putString("user_image", user_image)
+            bundle.putFloat("fontSize", fontSize)
+
             setOnItemSelectedListener { item ->
                 when (item.itemId) {
                     //네비게이션 홈 버튼 클릭
                     R.id.menu_home -> {
+                        var homeFragment = HomeFragment()
+                        homeFragment.arguments = bundle // fragment의 arguments에 데이터를 담은 bundle을 넘겨줌.
+
                         supportFragmentManager.beginTransaction()
-                            .replace(R.id.mainFrameLayout, HomeFragment())
-                            .addToBackStack(null)
-                            .commit();
+                            .replace(R.id.mainFrameLayout, homeFragment)
+                            .addToBackStack(null).commit();
                     }
 
                     //네비게이션 마이 페이지 버튼 클릭
                     R.id.menu_mypage -> {
                         var myPageFragment = MyPageFragment()
-                        var bundle = Bundle()
-
-                        bundle.putString("user_id", user_id)
-                        bundle.putString("user_name", user_name)
-                        bundle.putString("user_image", user_image)
-                        bundle.putFloat("fontSize", fontSize)
                         myPageFragment.arguments = bundle // fragment의 arguments에 데이터를 담은 bundle을 넘겨줌.
 
                         supportFragmentManager.beginTransaction()
@@ -74,10 +77,12 @@ class MainActivity : AppCompatActivity() {
 
                     //네비게이션 약속 생성 버튼 클릭
                     R.id.menu_social -> {
+                        var socialFragment = SocialFragment()
+                        socialFragment.arguments = bundle // fragment의 arguments에 데이터를 담은 bundle을 넘겨줌.
+
                         supportFragmentManager.beginTransaction()
-                            .replace(R.id.mainFrameLayout, SocialFragment())
-                            .addToBackStack(null)
-                            .commit()
+                            .replace(R.id.mainFrameLayout, socialFragment)
+                            .addToBackStack(null).commit()
                     }
                 }
 

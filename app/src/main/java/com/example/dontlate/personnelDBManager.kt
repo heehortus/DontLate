@@ -19,7 +19,7 @@ class personnelDBManager (context : Context,
     var dbName : String = name
 
     override fun onCreate(db: SQLiteDatabase?) {
-        db!!.execSQL("CREATE TABLE $dbName (date text, title text, time text, place text, state text)")
+        db!!.execSQL("CREATE TABLE $dbName (user_id text, headID text, date text, title text, time text, place text, state text)")
     }
 
     override fun onUpgrade(p0: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {

@@ -1070,7 +1070,7 @@
                 android:layout_marginTop="32dp"
                 android:layout_marginBottom="80dp"
                 android:background="@drawable/social_orangebutton_border"
-                android:text="약속 생성하기"
+                android:text="다음"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/black"
                 android:textSize="20sp"

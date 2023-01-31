@@ -36,8 +36,27 @@ class social25 : AppCompatActivity() {
         datePicker = findViewById(R.id.datePicker)
 
 
+        // 이전 화면에서 데이터 넘겨받기
+        var intent = intent
+        var headID = intent.getStringExtra("headID")
+        var name = intent.getStringExtra("name")
+        var total_num = intent.getStringExtra("total_num")
+        var place = intent.getStringExtra("place")
+        var mention = intent.getStringExtra("mention")
+        var deadline = intent.getStringExtra("deadline")
+        var private = intent.getStringExtra("object")
+        var inviteCode = intent.getStringExtra("inviteCode")
+
         backBtn.setOnClickListener {
             val intent = Intent(this, social17::class.java)
+            intent.putExtra("headID", headID)
+            intent.putExtra("name", name)
+            intent.putExtra("total_num", total_num)
+            intent.putExtra("place", place)
+            intent.putExtra("mention", mention)
+            intent.putExtra("deadline", deadline)
+            intent.putExtra("object", private)
+            intent.putExtra("inviteCode", inviteCode)
             startActivity(intent)
         }
 
@@ -50,14 +69,24 @@ class social25 : AppCompatActivity() {
             month = (datePicker.month + 1).toString() + "월"
             date = (datePicker.dayOfMonth + 1).toString() + "일"
 
-
-            //화면 넘기기
-            val intent = Intent(this, social27::class.java)
-            startActivity(intent)
-
             //요일 받아오기
             date = "${datePicker.year}/${(datePicker.month + 1)}/${datePicker.dayOfMonth}"
             var dayOfTheWeek = getDateDay(date, "yy/MM/dd") + "요일"
+            var day = "${(datePicker.month + 1)}월 ${datePicker.dayOfMonth}일 $dayOfTheWeek"
+
+            //화면 넘기기
+            val intent = Intent(this, social27::class.java)
+            intent.putExtra("headID", headID)
+            intent.putExtra("name", name)
+            intent.putExtra("total_num", total_num)
+            intent.putExtra("place", place)
+            intent.putExtra("mention", mention)
+            intent.putExtra("deadline", deadline)
+            intent.putExtra("object", private)
+            intent.putExtra("inviteCode", inviteCode)
+            intent.putExtra("date", day)
+            intent.putExtra("dayOfTheWeek", dayOfTheWeek)
+            startActivity(intent)
         }
     }
 

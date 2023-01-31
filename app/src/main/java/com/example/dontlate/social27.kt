@@ -112,11 +112,11 @@ class social27 : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.social_layout27)
+        setContentView(R.layout.social_layout33)
 
 
         nextBtn = findViewById(R.id.s33_next_btn)
-        backBtn = findViewById(R.id.s27_back_btn)
+        backBtn = findViewById(R.id.s33_back_btn)
         selectedTimeText = findViewById(R.id.selectedDateText)
 
         mon10 = findViewById(R.id.mon10)
@@ -398,17 +398,119 @@ class social27 : AppCompatActivity(), View.OnClickListener {
         sun22.setSelected(false)
 
 
+        // 이전 화면에서 데이터 받아오기
+        var intent = intent
+        var headID = intent.getStringExtra("headID")
+        var name = intent.getStringExtra("name")
+        var total_num = intent.getStringExtra("total_num")
+        var place = intent.getStringExtra("place")
+        var mention = intent.getStringExtra("mention")
+        var deadline = intent.getStringExtra("deadline")
+        var private = intent.getStringExtra("object")
+        var inviteCode = intent.getStringExtra("inviteCode")
+        var date = intent.getStringExtra("date")
+        var dayOfTheWeek = intent.getStringExtra("dayOfTheWeek")
 
         backBtn.setOnClickListener {
             var intent = Intent(this, social25::class.java)
+            intent.putExtra("headID", headID)
+            intent.putExtra("name", name)
+            intent.putExtra("total_num", total_num)
+            intent.putExtra("place", place)
+            intent.putExtra("mention", mention)
+            intent.putExtra("deadline", deadline)
+            intent.putExtra("object", private)
+            intent.putExtra("inviteCode", inviteCode)
+            intent.putExtra("date", date)
             startActivity(intent)
         }
 
         nextBtn.setOnClickListener {
-
-            // 초기화면으로 돌아가기
-            val intent = Intent(applicationContext, MainActivity::class.java)
+            val intent = Intent(applicationContext, SummaryActivity::class.java)
+            intent.putExtra("headID", headID)
+            intent.putExtra("name", name)
+            intent.putExtra("total_num", total_num)
+            intent.putExtra("place", place)
+            intent.putExtra("mention", mention)
+            intent.putExtra("deadline", deadline)
+            intent.putExtra("object", private)
+            intent.putExtra("inviteCode", inviteCode)
+            intent.putExtra("date", date)
+            intent.putExtra("time", selectedTime)
             startActivity(intent)
+        }
+
+        val dayArray : Array<String> = arrayOf("월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일")
+        val monBtnArray : Array<Button> = arrayOf(mon10, mon11, mon12, mon13, mon14, mon15, mon16, mon17, mon18, mon19, mon20,
+                                                mon21, mon22)
+        val tueBtnArray : Array<Button> = arrayOf(tue10, tue11, tue12, tue13, tue14, tue15, tue16, tue17, tue18, tue19, tue20,
+                                                tue21, tue22)
+        val wedBtnArray : Array<Button> = arrayOf(wed10, wed11, wed12, wed13, wed14, wed15, wed16, wed17, wed18, wed19, wed20,
+                                                wed21, wed22)
+        val thuBtnArray : Array<Button> = arrayOf(thu10, thu11, thu12, thu13, thu14, thu15, thu16, thu17, thu18, thu19, thu20,
+                                                thu21, thu22)
+        val friBtnArray : Array<Button> = arrayOf(fri10, fri11, fri12, fri13, fri14, fri15, fri16, fri17, fri18, fri19, fri20,
+                                                fri21, fri22)
+        val satBtnArray : Array<Button> = arrayOf(sat10, sat11, sat12, sat13, sat14, sat15, sat16, sat17, sat18, sat19, sat20,
+                                                sat21, sat22)
+        val sunBtnArray : Array<Button> = arrayOf(sun10, sun11, sun12, sun13, sun14, sun15, sun16, sun17, sun18, sun19, sun20,
+                                                sun21, sun22)
+
+        if(dayOfTheWeek == "월요일") {
+            for (tueBtn in tueBtnArray) tueBtn.isEnabled = false
+            for (wedBtn in wedBtnArray) wedBtn.isEnabled = false
+            for (thuBtn in thuBtnArray) thuBtn.isEnabled = false
+            for (friBtn in friBtnArray) friBtn.isEnabled = false
+            for (satBtn in satBtnArray) satBtn.isEnabled = false
+            for (sunBtn in sunBtnArray) sunBtn.isEnabled = false
+        }
+        else if(dayOfTheWeek == "화요일") {
+            for (monBtn in monBtnArray) monBtn.isEnabled = false
+            for (wedBtn in wedBtnArray) wedBtn.isEnabled = false
+            for (thuBtn in thuBtnArray) thuBtn.isEnabled = false
+            for (friBtn in friBtnArray) friBtn.isEnabled = false
+            for (satBtn in satBtnArray) satBtn.isEnabled = false
+            for (sunBtn in sunBtnArray) sunBtn.isEnabled = false
+        }
+        else if(dayOfTheWeek == "수요일") {
+            for (monBtn in monBtnArray) monBtn.isEnabled = false
+            for (tueBtn in tueBtnArray) tueBtn.isEnabled = false
+            for (thuBtn in thuBtnArray) thuBtn.isEnabled = false
+            for (friBtn in friBtnArray) friBtn.isEnabled = false
+            for (satBtn in satBtnArray) satBtn.isEnabled = false
+            for (sunBtn in sunBtnArray) sunBtn.isEnabled = false
+        }
+        else if(dayOfTheWeek == "목요일") {
+            for (monBtn in monBtnArray) monBtn.isEnabled = false
+            for (tueBtn in tueBtnArray) tueBtn.isEnabled = false
+            for (wedBtn in wedBtnArray) wedBtn.isEnabled = false
+            for (friBtn in friBtnArray) friBtn.isEnabled = false
+            for (satBtn in satBtnArray) satBtn.isEnabled = false
+            for (sunBtn in sunBtnArray) sunBtn.isEnabled = false
+        }
+        else if(dayOfTheWeek == "금요일") {
+            for (monBtn in monBtnArray) monBtn.isEnabled = false
+            for (tueBtn in tueBtnArray) tueBtn.isEnabled = false
+            for (wedBtn in wedBtnArray) wedBtn.isEnabled = false
+            for (thuBtn in thuBtnArray) thuBtn.isEnabled = false
+            for (satBtn in satBtnArray) satBtn.isEnabled = false
+            for (sunBtn in sunBtnArray) sunBtn.isEnabled = false
+        }
+        else if(dayOfTheWeek == "토요일") {
+            for (monBtn in monBtnArray) monBtn.isEnabled = false
+            for (tueBtn in tueBtnArray) tueBtn.isEnabled = false
+            for (wedBtn in wedBtnArray) wedBtn.isEnabled = false
+            for (thuBtn in thuBtnArray) thuBtn.isEnabled = false
+            for (friBtn in friBtnArray) friBtn.isEnabled = false
+            for (sunBtn in sunBtnArray) sunBtn.isEnabled = false
+        }
+        else if(dayOfTheWeek == "일요일") {
+            for (monBtn in monBtnArray) monBtn.isEnabled = false
+            for (tueBtn in tueBtnArray) tueBtn.isEnabled = false
+            for (wedBtn in wedBtnArray) wedBtn.isEnabled = false
+            for (thuBtn in thuBtnArray) thuBtn.isEnabled = false
+            for (friBtn in friBtnArray) friBtn.isEnabled = false
+            for (satBtn in satBtnArray) satBtn.isEnabled = false
         }
     }
 
@@ -975,9 +1077,6 @@ class social27 : AppCompatActivity(), View.OnClickListener {
         selectedTime = this.time
         selectedTimeText.setText(selectedTime)
         var time_arr = selectedTime.split(",")
-
-        var timeIntent = Intent(this, social33::class.java)
-        startActivity(timeIntent)
 
     }
 }

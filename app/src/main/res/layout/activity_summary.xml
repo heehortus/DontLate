@@ -191,23 +191,6 @@
         app:layout_constraintTop_toBottomOf="@+id/placeText"
         app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/timeText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="27dp"
-        android:text="00:00 ~ 00:00 가능"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/dateText"
-        app:layout_constraintTop_toBottomOf="@+id/personnelText"
-        app:layout_constraintVertical_bias="0.0" />
-
     <Button
         android:id="@+id/clipboardBtn"
         android:layout_width="80dp"
@@ -234,8 +217,10 @@
         android:layout_marginEnd="32dp"
         android:background="@drawable/mention_background"
         android:ems="10"
+        android:focusable="false"
         android:gravity="top|left"
         android:inputType="text"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -246,14 +231,14 @@
     <Button
         android:id="@+id/newBtn"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/orange"
         android:text="약속 생성하기"
         android:textColor="@color/black"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
