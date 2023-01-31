@@ -69,16 +69,15 @@ class HomeFragment : Fragment() {
             var title = cursor.getString(cursor.getColumnIndex("title")).toString()
             var date = cursor.getString(cursor.getColumnIndex("date")).toString()
             var place = cursor.getString(cursor.getColumnIndex("place")).toString()
-            var total_num = cursor.getString(cursor.getColumnIndex("total_num")).toString()
-            var current_num = cursor.getString(cursor.getColumnIndex("current_num")).toString()
+            var state = cursor.getString(cursor.getColumnIndex("state")).toString()
 
             listBoard.add(
                 home_board("$user_id","$headID","$title", "$place", "$date",
-                    "$current_num", "$total_num")
+                    "$state")
             )
         }
 
-        if(listBoard == null)
+        if(cursor != null)
         {
             binding.homeImage.isInvisible = true
             binding.homeEmptyText.isInvisible = true

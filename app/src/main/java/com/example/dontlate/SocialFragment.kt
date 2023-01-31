@@ -93,7 +93,10 @@ class SocialFragment : Fragment() {
                 object : ClickListener {
                     override fun onClick(view: View?, position: Int) {
                         var intent = Intent(getActivity(), social35::class.java)
+                        intent.putExtra("user_id", user_id)
+                        intent.putExtra("headID", headID)
                         intent.putExtra("title", title)
+                        intent.putExtra("date", date)
                         startActivity(intent)
                     }
 

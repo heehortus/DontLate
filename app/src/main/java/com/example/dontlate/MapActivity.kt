@@ -13,6 +13,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -47,7 +48,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, CoroutineScope {
     private lateinit var myLocationListener: MyLocationListener // 나의 위치를 불러올 리스너
 
     lateinit var mapConfirmBtn : Button
-    lateinit var mapBackBtn : Button
+    lateinit var mapBackBtn : ImageButton
 
     companion object {
         const val SEARCH_RESULT_EXTRA_KEY: String = "SEARCH_RESULT_EXTRA_KEY"
@@ -92,6 +93,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, CoroutineScope {
             startActivity(intent)
         }
 
+        mapBackBtn = findViewById(R.id.map_back_btn)
         mapBackBtn.setOnClickListener {
             var intent = Intent(this@MapActivity, SearchActivity::class.java)
 
