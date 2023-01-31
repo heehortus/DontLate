@@ -83,40 +83,42 @@
             android:text="약속 기한입니다"
             android:textSize="13sp"
             android:textStyle="bold" />
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="5dp"
-            app:srcCompat="@drawable/people_image_resize"
-            android:contentDescription="최대 인원" />
-
-        <TextView
-            android:id="@+id/board_current"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|end"
-            android:textStyle="bold"
-            android:text="4"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|end"
-            android:text=" / "
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/board_possible"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|end"
-            android:textStyle="bold"
-            android:text="6"/>
     </LinearLayout>
-</LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="end">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                app:srcCompat="@drawable/people_image_resize"
+                android:contentDescription="최대 인원" />
+
+            <TextView
+                android:id="@+id/board_current"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|end"
+                android:textStyle="bold"
+                android:text="4"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|end"
+                android:text=" / "
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/board_possible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|end"
+                android:textStyle="bold"
+                android:text="6"/>
+        </LinearLayout>
+    </LinearLayout>

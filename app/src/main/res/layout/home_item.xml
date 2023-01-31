@@ -26,15 +26,6 @@
             android:background="@drawable/setting_switch_track_off"
             android:text="신청한 약속"/>
 
-        <Button
-            android:id="@+id/board_produce"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_gravity="left"
-            android:layout_marginLeft="4dp"
-            android:layout_weight="1"
-            android:background="@drawable/setting_switch_track_off"
-            android:text="생성한 약속"/>
     </LinearLayout>
 
     <!--제목-->

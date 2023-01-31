@@ -1,5 +1,6 @@
 package com.example.dontlate
 
+import android.database.sqlite.SQLiteDatabase
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
