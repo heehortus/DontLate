@@ -31,9 +31,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/bell" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="404dp"
         android:layout_height="419dp"
+        android:layout_marginTop="100dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,8 +47,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:overScrollMode="never"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-    </LinearLayout>
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+    </ScrollView>
 
     <ImageView
         android:id="@+id/home_image"

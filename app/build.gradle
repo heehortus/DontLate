@@ -86,4 +86,23 @@ dependencies {
 
     //리사이클러 뷰 (커뮤니티 게시판 보기)
     implementation "androidx.recyclerview:recyclerview:1.1.0"
+
+    // Room components
+    def roomVersion = '2.2.6'
+    implementation "androidx.room:room-runtime:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
+    implementation "androidx.room:room-ktx:$roomVersion"
+    androidTestImplementation "androidx.room:room-testing:$roomVersion"
+
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
+
+    // Annotation processor
+    kapt "androidx.lifecycle:lifecycle-compiler:2.2.0"
+
+    // UI
+    implementation "com.google.android.material:material:1.1.0"
+
+    // Testng
+    androidTestImplementation "androidx.arch.core:core-testing:2.1.0"
 }

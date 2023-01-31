@@ -15,14 +15,18 @@ import java.util.*
 
 class social14 : AppCompatActivity() {
 
+    //위젯 선언
     private lateinit var nextBtn: Button
     private lateinit var backBtn: ImageButton
     private lateinit var dltBtn: ImageButton
     private lateinit var plus: ImageButton
     private lateinit var min: ImageButton
     private lateinit var numText: TextView
+
+    //최소 인원 수
     private var count = 2
 
+    //마감 기한 설정
     private lateinit var datePicker : DatePicker
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,6 +57,7 @@ class social14 : AppCompatActivity() {
             finish()
         }
 
+        //최대 인원 증가 버튼
         plus.setOnClickListener {
             // Plus Click 이벤트 처리 구간
             if (count in 2..5) {
@@ -63,6 +68,7 @@ class social14 : AppCompatActivity() {
             }
         }
 
+        //최대 인원 감소 버튼
         min.setOnClickListener {
             if (count in 3..6) {
                 count--
@@ -72,6 +78,7 @@ class social14 : AppCompatActivity() {
             }
         }
 
+        //캘린더 뷰로 넘어가기
         nextBtn.setOnClickListener {
             //요일 받아오기
             var date = "${datePicker.year}/${(datePicker.month + 1)}/${datePicker.dayOfMonth}"
@@ -97,6 +104,8 @@ class social14 : AppCompatActivity() {
      */
     @RequiresApi(Build.VERSION_CODES.N)
     @Throws(Exception::class)
+
+    //캘린더 상의 날짜 받아오기
     fun getDateDay(date: String?, dateType: String?): String? {
         var day = ""
         val dateFormat = SimpleDateFormat(dateType)
