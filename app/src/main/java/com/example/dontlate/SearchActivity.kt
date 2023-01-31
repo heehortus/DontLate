@@ -149,16 +149,20 @@ class SearchActivity : AppCompatActivity(), CoroutineScope {
         adapter.setSearchResultList(dataList) {
             // map 액티비티 시작
             var intent = intent
+            var headID = intent.getStringExtra("headID")
             var name = intent.getStringExtra("name")
-            var person_num = intent.getStringExtra("person_num")
+            var total_num = intent.getStringExtra("total_num")
             var deadline = intent.getStringExtra("deadline")
+            var usePlaceBtn = intent.getBooleanExtra("usePlaceBtn", true)
 
             startActivity(Intent(this, MapActivity::class.java).apply {
                 putExtra(SEARCH_RESULT_EXTRA_KEY, it)
+                putExtra("headID", headID)
                 putExtra("place_name", it.name)
                 putExtra("name", name)
-                putExtra("person_num", person_num)
+                putExtra("total_num", total_num)
                 putExtra("deadline", deadline)
+                putExtra("usePlaceBtn", usePlaceBtn)
             })
         }
         adapter.currentPage = searchInfo.page.toInt()

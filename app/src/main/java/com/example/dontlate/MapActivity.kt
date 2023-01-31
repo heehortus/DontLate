@@ -72,17 +72,22 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, CoroutineScope {
 
         mapConfirmBtn = findViewById(R.id.mapConfirmBtn)
         var intent = intent
+        var headID = intent.getStringExtra("headID")
         var place = intent.getStringExtra("place_name")
         var name = intent.getStringExtra("name")
-        var person_num = intent.getStringExtra("person_num")
+        var total_num = intent.getStringExtra("total_num")
         var deadline = intent.getStringExtra("deadline")
+        var usePlaceBtn = intent.getBooleanExtra("usePlaceBtn", true)
 
         mapConfirmBtn.setOnClickListener {
             var intent = Intent(this@MapActivity, social17::class.java)
+
+            intent.putExtra("headID", headID)
             intent.putExtra("place_name", place)
             intent.putExtra("name", name)
-            intent.putExtra("person_num", person_num)
+            intent.putExtra("total_num", total_num)
             intent.putExtra("deadline", deadline)
+            intent.putExtra("usePlaceBtn", usePlaceBtn)
             startActivity(intent)
         }
     }

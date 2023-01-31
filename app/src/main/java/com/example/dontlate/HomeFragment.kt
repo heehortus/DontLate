@@ -23,7 +23,6 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-
         val adapter = HomeListAdapter(home_board)
         binding.recyclerHome.adapter = adapter
         return binding.root
