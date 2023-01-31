@@ -31,4 +31,46 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/bell" />
 
+    <LinearLayout
+        android:layout_width="404dp"
+        android:layout_height="419dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/home_logo">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/home_image"
+        android:layout_width="134dp"
+        android:layout_height="135dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/homeclock"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/home_emptyText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="아직 약속이 없어요. 약속을 생성해보세요!"
+        android:textStyle="bold" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
