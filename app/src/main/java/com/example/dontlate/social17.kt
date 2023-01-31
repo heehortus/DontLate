@@ -17,9 +17,11 @@ import java.util.*
 
 class social17 : AppCompatActivity() {
 
+    //초대 코드 (자동 생성)
     private lateinit var ivtcode: TextView
     private lateinit var inviteCode : String
 
+    //위젯 선언
     private lateinit var nextBtn: Button
     private lateinit var publicBtn: Button
     private lateinit var privateBtn: Button
@@ -45,7 +47,6 @@ class social17 : AppCompatActivity() {
     //정보 수정 시 팝업 제공
     var dialog : CustomDialog? = null
 
-
     @SuppressLint("Range")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,8 +66,6 @@ class social17 : AppCompatActivity() {
 
         //정보 수정 반영 다이얼로그
         dialog = CustomDialog(this)
-
-
 
         // 로그인 정보 받아오기 - 홈 화면으로 나갈 때 정보 전달
         val intent = intent

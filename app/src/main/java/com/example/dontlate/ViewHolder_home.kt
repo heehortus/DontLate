@@ -14,8 +14,6 @@ class ViewHolder_home (v: View) : RecyclerView.ViewHolder(v) {
     var view : View = v
 
     fun bind(item : home_board) {
-        view.board_apply.text = item.board_apply
-        view.board_produce.text = item.board_produce
         view.board_title.text = item.board_title
         view.board_place.text = item.board_place
         view.board_date.text = item.board_date
