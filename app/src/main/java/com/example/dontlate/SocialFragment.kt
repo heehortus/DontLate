@@ -78,7 +78,6 @@ class SocialFragment : Fragment() {
 
             binding.keyword1.setOnClickListener {
                 binding.keyword1.setClickable(true)
-                binding.keyword1.setTextColor(Color.parseColor("#E88B58"))
                 binding.keyword2.setClickable(false)
                 binding.keyword3.setClickable(false)
                 binding.keyword4.setClickable(false)
