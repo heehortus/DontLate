@@ -116,7 +116,6 @@ class social33 : AppCompatActivity(), View.OnClickListener {
 
         nextBtn = findViewById(R.id.s33_next_btn)
         backBtn = findViewById(R.id.s33_back_btn)
-        selectedTimeText = findViewById(R.id.selectedDateText)
 
         mon10 = findViewById(R.id.mon10)
         tue10 = findViewById(R.id.tue10)
@@ -306,7 +305,7 @@ class social33 : AppCompatActivity(), View.OnClickListener {
 
 
         backBtn.setOnClickListener {
-            var intent = Intent(this, social32::class.java)
+            var intent = Intent(this, social35::class.java)
             startActivity(intent)
         }
 
@@ -884,7 +883,6 @@ class social33 : AppCompatActivity(), View.OnClickListener {
             }
         }
         selectedTime = this.time
-        selectedTimeText.setText(selectedTime)
 
         val time_arr = selectedTime.split(",")
     }

@@ -86,7 +86,6 @@ class social14 : AppCompatActivity() {
             var deadline = "${(datePicker.month + 1)}월 ${datePicker.dayOfMonth}일 $dayOfTheWeek"
 
             var intent = Intent(this, social17::class.java)
-            Toast.makeText(this@social14, "$count/$deadline", Toast.LENGTH_SHORT).show()
             intent.putExtra("total_num", "$count")
             intent.putExtra("deadline", deadline)
             intent.putExtra("headID", user_id)

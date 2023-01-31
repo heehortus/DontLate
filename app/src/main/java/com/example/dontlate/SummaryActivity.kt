@@ -115,7 +115,7 @@ class SummaryActivity : AppCompatActivity() {
 
             serverDBManager = serverDBManager(this@SummaryActivity, "server", null, 1)
             sqlitedb = serverDBManager.writableDatabase
-            sqlitedb.execSQL("INSERT INTO server VALUES ('$headID', '$date', '$title', '$place', '$deadline', $total_num, 1, '대기'," +
+            sqlitedb.execSQL("INSERT INTO server VALUES ('$headID', '$date', '$title', '$place', '$deadline', $total_num, '$mention', 1, '대기'," +
                     "'$private', '$ivtCode', null)")
             serverDBManager.close()
             sqlitedb.close()

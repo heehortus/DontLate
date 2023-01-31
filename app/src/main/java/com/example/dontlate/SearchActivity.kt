@@ -56,7 +56,6 @@ class SearchActivity : AppCompatActivity(), CoroutineScope {
         backBtn = findViewById(R.id.map_back_btn)
 
         backBtn.setOnClickListener {
-            // map 액티비티 시작
             var intent = intent
             var headID = intent.getStringExtra("headID")
             var name = intent.getStringExtra("name")

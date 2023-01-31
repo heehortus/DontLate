@@ -73,7 +73,7 @@ class loginActivity : AppCompatActivity() {
                 if(str_ID == user_id) existentID = true
             }
 
-            if(existentID == true) { // 존재하는 아이디라면 비밀번호 비교를 통해 로그인 시도
+            if(existentID) { // 존재하는 아이디라면 비밀번호 비교를 통해 로그인 시도
 
                 cursor = sqlitedb.rawQuery("SELECT * FROM user_info WHERE ID = '$str_ID';", null)
 

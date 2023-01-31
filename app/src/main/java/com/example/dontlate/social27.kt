@@ -1,5 +1,6 @@
 package com.example.dontlate
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -16,7 +17,6 @@ class social27 : AppCompatActivity(), View.OnClickListener {
     private lateinit var nextBtn: Button
     private lateinit var backBtn: ImageButton
     private lateinit var selectedTime : String
-    private lateinit var selectedTimeText : TextView
 
     private lateinit var mon10: Button
     private lateinit var tue10: Button
@@ -110,6 +110,7 @@ class social27 : AppCompatActivity(), View.OnClickListener {
     private lateinit var sat22: Button
     private lateinit var sun22: Button
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.social_layout33)
@@ -117,7 +118,6 @@ class social27 : AppCompatActivity(), View.OnClickListener {
 
         nextBtn = findViewById(R.id.s33_next_btn)
         backBtn = findViewById(R.id.s33_back_btn)
-        selectedTimeText = findViewById(R.id.selectedDateText)
 
         mon10 = findViewById(R.id.mon10)
         tue10 = findViewById(R.id.tue10)
@@ -1075,7 +1075,6 @@ class social27 : AppCompatActivity(), View.OnClickListener {
             }
         }
         selectedTime = this.time
-        selectedTimeText.setText(selectedTime)
         var time_arr = selectedTime.split(",")
 
     }

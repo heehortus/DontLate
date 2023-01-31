@@ -1056,12 +1056,6 @@
 
             </TableLayout>
 
-            <TextView
-                android:id="@+id/selectedDateText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-
             <Button
                 android:id="@+id/s33_next_btn"
                 android:layout_width="match_parent"

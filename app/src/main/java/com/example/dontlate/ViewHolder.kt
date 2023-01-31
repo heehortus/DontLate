@@ -11,7 +11,7 @@ class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         view.board_title.text = item.board_title
         view.board_place.text = item.board_place
         view.board_date.text = item.board_date
-        view.board_current.text = item.board_current
+        view.board_state.text = item.board_current
         view.board_possible.text = item.board_possible
     }
 }
